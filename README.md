@@ -14,6 +14,10 @@ Le jeu a été développé en utilisant les bibliothèques disponible dans [requ
 Pour installer la dernière version du jeu, vous pouvez télécharger la dernière release correspondant à votre système d'exploitation depuis [la page des releases de ce dépôt GitHub](https://github.com/Jardi-land/Downhill-Daredevil-Extreme-2000/releases). Si vous voulez directement installer le code source vous devrer executer les commandes suivantes:
 
 ```shell
+git clone https://github.com/Jardi-land/Downhill-Daredevil-Extreme-2000.git
+```
+
+```shell
 pip install -r requirements.txt
 ```
 Ensuite, vous pouvez exécuter le fichier "main.py" dans votre terminal ou via votre environnement de développement Python.
