@@ -10,7 +10,7 @@ import platform  # Import de la librairie platform
 import traceback  # Import de la librairie traceback
 
 # import crash_catch (future module)
-# import alias as al (future module)
+import alias as al
 # from input import Input_global (future module)
 # from settings import * (future module)
 # from debug import debug_overlay (future module)
