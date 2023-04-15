@@ -13,7 +13,7 @@ import traceback  # Import de la librairie traceback
 import alias as al
 from input import Input_global
 # from settings import * (future module)
-# from debug import debug_overlay (future module)
+from debug import debug_overlay
 
 
 def game_loop(fullscreen: bool = False,
