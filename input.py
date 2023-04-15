@@ -1,7 +1,6 @@
 # ------------------
-# This file is part of the lz_framework project.
-# Author: Lorenzo De Zen
-# License: MIT
+# Author: Lorenzo De Zen / Nathan Marchand
+# License: Check the LICENSE file
 # ------------------
 
 import pygame  # Import de la librairie pygame
