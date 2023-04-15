@@ -1,6 +1,6 @@
 # ------------------
 # Author: Lorenzo De Zen / Nathan Marchand
-# License: MIT
+# License: Check the LICENSE file
 # ------------------
 
 import pygame  # Import de la libraire pygame
