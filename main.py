@@ -49,7 +49,7 @@ def game_loop(fullscreen: bool = False,
     # Définition de la vitesse de rafraîchissement de la fenêtre
     clock = pygame.time.Clock()
 
-    # Définition de l'affichage du curseur de la souris 
+    # Définition de l'affichage du curseur de la souris
     pygame.mouse.set_visible(mouse_visible)
 
     # Définition de l'icône de la fenêtre en fonction de icon_type
