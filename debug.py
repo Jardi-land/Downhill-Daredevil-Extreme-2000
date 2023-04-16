@@ -8,19 +8,24 @@ import pygame  # Import de la libraire pygame
 
 class Debug:
     """
-    Classe Debug : permet d'afficher du texte à l'écran pour le débogage.
+    Classe qui permet d'afficher des messages de débogage sur une surface de jeu Pygame.
 
-    Attributs :
-        - surface : pygame.Surface, une surface pour afficher le texte
-        - dict : dict, un dictionnaire stockant les textes à afficher
-        - font : pygame.font.Font, la police utilisée pour afficher le texte
+    Attributes:
+        surface (pygame.Surface): La surface Pygame sur laquelle le texte sera affiché.
+        dict (dict): Le dictionnaire qui contient les messages de débogage à afficher.
+        font (pygame.font.Font): La police d'écriture utilisée pour afficher le texte.
 
-    Méthodes :
-        - update(text: str) : Ajoute un texte à afficher dans le dictionnaire.
-        - draw(surface: pygame.Surface) : Dessine les textes stockés sur la surface passée en paramètre et réinitialise le dictionnaire.
+    Methods:
+        update(text=""): Ajoute un message de débogage au dictionnaire.
+        draw(surface): Dessine le texte sur la surface Pygame spécifiée.
     """
 
     def __init__(self) -> None:
+        """
+        Initialise la classe Debug.
+        Crée une surface Pygame de dimensions 1920x1080, un dictionnaire vide pour stocker les messages,
+        et une police d'écriture de taille 15 à partir d'un fichier de police TTF.
+        """
         # Création de la surface pour afficher le texte
         self.surface = pygame.Surface((1920, 1080)).convert_alpha()
         self.surface.fill((0, 0, 0, 0))
