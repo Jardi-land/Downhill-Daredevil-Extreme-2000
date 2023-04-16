@@ -9,11 +9,11 @@ import os  # Import de la librairie os
 import platform  # Import de la librairie platform
 import traceback  # Import de la librairie traceback
 
-# import crash_catch (future module)
+import crash_catch
 import alias as al
 from input import Input_global
 from settings import *
-from debug import debug_overlay
+from debug import Debug_overlay
 
 
 def game_loop(fullscreen: bool = False,
