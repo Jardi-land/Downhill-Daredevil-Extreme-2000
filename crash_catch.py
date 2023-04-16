@@ -14,10 +14,10 @@ from settings import *
 
 def main(crash_report: str) -> None:
     """
-    Affiche une fenêtre d'erreur en cas de crash du programme. Ouvre automatiquement l'application de messagerie avec un nouveau message contenant un rapport d'erreur.
+    Lance l'application de messagerie avec un nouveau message contenant un rapport d'erreur.
 
     Args:
-        crash_report (str): Le message d'erreur à inclure dans le rapport envoyé par email.
+        crash_report (str): Le rapport d'erreur à envoyer.
 
     Returns:
         None.
