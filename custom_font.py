@@ -10,7 +10,8 @@ from spritesheet import SpriteSheet
 
 
 class Font:
-    """Une classe représentant une police de caractères.
+    """
+    Une classe représentant une police de caractères.
 
     Parameters:
     -----------
@@ -60,6 +61,7 @@ class Font:
         self.__resize()
 
     def __resize(self):
+        """Redimensionne les surfaces Pygame de chaque caractère en fonction de l'échelle de la police."""
         for surface in self.surface_dict:
             _ = (self.surface_dict[surface].get_width(
             ) * self.scale, self.surface_dict[surface].get_height() * self.scale)
@@ -68,6 +70,21 @@ class Font:
             del _
 
     def render(self, string: str = "", catch: str = ""):
+        """
+        Rend la chaîne de caractères donnée sous forme de surface Pygame.
+
+        Parameters:
+        -----------
+        string : str, optional
+            La chaîne de caractères à rendre.
+        catch : str, optional
+            Le caractère de remplacement à utiliser si un caractère non pris en charge est rencontré.
+
+        Returns:
+        --------
+        surface : pygame.Surface
+            Une surface Pygame contenant la chaîne de caractères rendue.
+        """
         surface_size = pygame.math.Vector2(0, 14*self.scale)
         for letter in string:
             if letter in self.possible_letters:
