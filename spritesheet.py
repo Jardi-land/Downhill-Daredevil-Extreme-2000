@@ -32,6 +32,23 @@ class SpriteSheet:
     """
 
     def __init__(self, filepath, jsonfile):
+        """        
+        Initialise un nouvel objet SpriteSheet avec les fichiers d'image et de données JSON donnés.
+
+        Args:
+            filepath (str): Le chemin du fichier image à charger.
+            jsonfile (str): Le chemin du fichier de données JSON associé.
+
+        Attributes:
+            filename (str): Le nom du fichier image chargé.
+            sprite_sheet (:obj:`pygame.Surface`): La surface d'image chargée depuis le fichier image.
+            meta_data (str): Le nom du fichier de données JSON chargé.
+            data (dict): Les données JSON chargées depuis le fichier de données.
+
+        Returns:
+            None
+        """
+
         self.filename = filepath
         self.sprite_sheet = al.im_load(filepath).convert_alpha()
         self.meta_data = jsonfile
