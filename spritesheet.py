@@ -10,43 +10,25 @@ import alias as al
 
 
 class SpriteSheet:
-    """
-    Classe représentant une feuille de sprites.
+    """A class representing a sprite sheet image and its associated metadata.
 
     Attributes:
-    -----------
-    filename : str
-        Le chemin d'accès du fichier de la feuille de sprites.
-    sprite_sheet : pygame.Surface
-        L'image de la feuille de sprites chargée et convertie en mode alpha.
-    meta_data : str
-        Le chemin d'accès du fichier JSON contenant les informations sur la feuille de sprites.
-    data : dict
-        Un dictionnaire contenant les informations sur la feuille de sprites extraites du fichier JSON.
+        filename (str): The filepath of the sprite sheet image.
+        sprite_sheet (pygame.Surface): The loaded sprite sheet image.
+        meta_data (str): The filepath of the associated JSON metadata file.
+        data (dict): The parsed JSON metadata.
 
     Methods:
-    --------
-    get_sprite(x, y, w, h)
-        Renvoie une surface Pygame contenant le sprite de la feuille de sprites aux coordonnées (x, y) avec une largeur w et une hauteur h.
+        get_sprite(x: int, y: int, w: int, h: int) -> pygame.Surface:
+            Returns a surface containing a sprite at the specified position and dimensions.
 
-    parse_sprite(animation_name="", frame="", animation=False, info=[])
-        Analyse les données de la feuille de sprites et renvoie le sprite correspondant en tant qu'image.
+        parse_sprite(animation_name: str="", frame: str="", animation: bool=False, info: List[str]=[]) -> pygame.Surface:
+            Returns a surface containing the sprite associated with the specified metadata.
 
-        Parameters:
-        -----------
-        animation_name : str, optional
-            Le nom de l'animation à laquelle appartient le sprite.
-        frame : str, optional
-            Le nom du cadre de l'animation correspondant au sprite.
-        animation : bool, optional
-            Un indicateur indiquant si le sprite est destiné à être utilisé dans une animation.
-        info : list, optional
-            Une liste contenant les clés du dictionnaire de données correspondant à l'emplacement du sprite.
-
-        Returns:
-        --------
-        image : pygame.Surface
-            Une surface Pygame contenant le sprite de la feuille de sprites correspondant aux paramètres donnés.
+    Example:
+        sprite_sheet = SpriteSheet("sprites.png", "sprites.json")
+        idle_sprite = sprite_sheet.parse_sprite(animation_name="player", frame="idle")
+        walking_sprite = sprite_sheet.parse_sprite(animation_name="player", frame="walking", animation=True)
     """
 
     def __init__(self, filepath, jsonfile):
@@ -58,48 +40,11 @@ class SpriteSheet:
         f.close()
 
     def get_sprite(self, x: int, y: int, w: int, h: int):
-        """
-        Renvoie une surface Pygame contenant le sprite de la feuille de sprites aux coordonnées (x, y) avec une largeur w et une hauteur h.
-
-        Parameters:
-        -----------
-        x : int
-            La position horizontale du sprite sur la feuille de sprites.
-        y : int
-            La position verticale du sprite sur la feuille de sprites.
-        w : int
-            La largeur du sprite.
-        h : int
-            La hauteur du sprite.
-
-        Returns:
-        --------
-        sprite : pygame.Surface
-            Une surface Pygame contenant le sprite de la feuille de sprites aux coordonnées (x, y) avec une largeur w et une hauteur h.
-        """
         sprite = pygame.Surface((w, h)).convert_alpha()
         sprite.blit(self.sprite_sheet, (0, 0), (x, y, w, h))
         return sprite
 
     def parse_sprite(self, animation_name="", frame="", animation=False, info=[]):
-        """Analyse les données de la feuille de sprites et renvoie le sprite correspondant en tant qu'image.
-
-        Parameters:
-        -----------
-        animation_name : str, optional
-            Le nom de l'animation à laquelle appartient le sprite.
-        frame : str, optional
-            Le nom du cadre de l'animation correspondant au sprite.
-        animation : bool, optional
-            Un indicateur indiquant si le sprite est destiné à être utilisé dans une animation.
-        info : list, optional
-            Une liste contenant les clés du dictionnaire de données correspondant à l'emplacement du sprite.
-
-        Returns:
-        --------
-        image : pygame.Surface
-            Une surface Pygame contenant le sprite de la feuille de sprites correspondant aux paramètres donnés.
-        """
         if animation:
             sprite = self.data[animation_name][frame]["frame"]
         else:
