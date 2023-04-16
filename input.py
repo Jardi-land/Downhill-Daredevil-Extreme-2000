@@ -32,20 +32,20 @@ class Input:
     Classe qui gère l'entrée utilisateur en jeu.
 
     Attributs :
-        - list_begin (dict) : dictionnaire contenant les états des périphériques en début de frame.
-        - list_end (dict) : dictionnaire contenant les états des périphériques en fin de frame.
-        - keyboard (Keyboard) : instance de la classe Keyboard qui gère l'état des touches du clavier.
+        list_begin (dict) : dictionnaire contenant les états des périphériques en début de frame.
+        list_end (dict) : dictionnaire contenant les états des périphériques en fin de frame.
+        keyboard (Keyboard) : instance de la classe Keyboard qui gère l'état des touches du clavier.
 
     Méthodes :
-        - __init__() : initialise les attributs list_begin, list_end et keyboard.
-        - frame_begin() : met à jour les états des périphériques en début de frame.
-        - frame_end() : met à jour les états des périphériques en fin de frame.
-        - test_key(key:str) -> bool : vérifie si la touche 'key' existe et renvoie True si c'est le cas.
-        - get_pressed(key:str) -> bool : renvoie True si la touche 'key' est enfoncée en début de frame.
-        - get_released(key:str) -> bool : renvoie True si la touche 'key' a été relâchée entre le début et la fin de frame.
-        - get_mouse_pos() -> Vector2 : renvoie la position de la souris en début de frame.
-        - get_mouse_button_pressed(index:int) -> bool : renvoie True si le bouton 'index' de la souris est enfoncé en début de frame.
-        - get_mouse_button_released(index:int) -> bool : renvoie True si le bouton 'index' de la souris a été relâché entre le début et la fin de frame.
+        __init__() : initialise les attributs list_begin, list_end et keyboard.
+        frame_begin() : met à jour les états des périphériques en début de frame.
+        frame_end() : met à jour les états des périphériques en fin de frame.
+        test_key(key:str) -> bool : vérifie si la touche 'key' existe et renvoie True si c'est le cas.
+        get_pressed(key:str) -> bool : renvoie True si la touche 'key' est enfoncée en début de frame.
+        get_released(key:str) -> bool : renvoie True si la touche 'key' a été relâchée entre le début et la fin de frame.
+        get_mouse_pos() -> Vector2 : renvoie la position de la souris en début de frame.
+        get_mouse_button_pressed(index:int) -> bool : renvoie True si le bouton 'index' de la souris est enfoncé en début de frame.
+        get_mouse_button_released(index:int) -> bool : renvoie True si le bouton 'index' de la souris a été relâché entre le début et la fin de frame.
 
     """
 
