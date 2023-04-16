@@ -11,9 +11,7 @@ import traceback  # Import de la librairie traceback
 
 import crash_catch
 import alias as al
-from input import Input_global
 from settings import *
-from debug import Debug_overlay
 
 
 def game_loop(fullscreen: bool = False,
@@ -39,9 +37,14 @@ def game_loop(fullscreen: bool = False,
 
     """
 
+    pygame.init()
+
     # Création de la fenêtre du jeu
     window = pygame.display.set_mode((0, 0),
                                      (HWSURFACE | DOUBLEBUF) | FULLSCREEN if fullscreen else RESIZABLE)
+
+    from input import Input_global
+    from debug import Debug_overlay
 
     # Définition du nom de la fenêtre
     pygame.display.set_caption(name)
