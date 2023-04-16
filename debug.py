@@ -69,4 +69,4 @@ class Debug:
 
 
 # Création d'une instance de la classe Debug
-debug_overlay = Debug()
+Debug_overlay = Debug()
