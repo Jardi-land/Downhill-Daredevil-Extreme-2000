@@ -37,6 +37,7 @@ def game_loop(fullscreen: bool = False,
 
     """
 
+    # Initialisation de pygame
     pygame.init()
 
     # Création de la fenêtre du jeu
