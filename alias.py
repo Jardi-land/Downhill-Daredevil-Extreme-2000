@@ -8,33 +8,26 @@ import pygame  # Import de la libraire pygame
 
 def im_load(path: str = "") -> pygame.Surface:
     """
-    Charge une image depuis un chemin de fichier donné et retourne un objet Surface de Pygame.\n
-    ! Pas besoin de convert_alpha() car la fonction le fait déjà. !
+    Charge une image à partir du chemin spécifié et renvoie une surface Pygame avec une transparence.
 
     Args:
-        path (str): Le chemin d'accès du fichier image à charger. Par défaut, c'est une chaîne de caractères vide.
+        path (str, optionnel): Le chemin vers le fichier image. Par défaut, "".
 
     Returns:
-        pygame.Surface: Un objet Surface de Pygame représentant l'image chargée.
-
-    Raises:
-        Toutes les exceptions levées par la méthode pygame.image.load().
+        pygame.Surface: Un objet surface Pygame avec de la transparence.
     """
     return pygame.image.load(path).convert_alpha()
 
 
 def im_scale(image: pygame.Surface, size: tuple = (0, 0)) -> pygame.Surface:
     """
-    Redimensionne une image donnée à la taille spécifiée et retourne un objet Surface de Pygame représentant l'image redimensionnée.
+    Redimensionne une surface Pygame à la taille spécifiée.
 
     Args:
-        image (pygame.Surface): L'objet Surface de Pygame représentant l'image à redimensionner.
-        size (tuple): Le tuple spécifiant la taille de l'image redimensionnée. Par défaut, c'est (0, 0).
+        image (pygame.Surface): La surface Pygame à redimensionner.
+        size (tuple, optionnel): La taille de la surface redimensionnée. Par défaut, (0, 0).
 
     Returns:
-        pygame.Surface: Un objet Surface de Pygame représentant l'image redimensionnée.
-
-    Raises:
-        Toutes les exceptions levées par la méthode pygame.transform.scale().
+        pygame.Surface: La surface Pygame redimensionnée.
     """
     return pygame.transform.scale(image, size)
