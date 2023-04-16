@@ -73,6 +73,18 @@ class SpriteSheet:
         return sprite
 
     def parse_sprite(self, animation_name="", frame="", animation=False, info=[]):
+        """
+        Extrait l'image de sprite à partir des données de la feuille de sprite.
+
+        Args:
+            animation_name (str): Nom de l'animation (si `animation` est True).
+            frame (str): Nom du frame de l'animation (si `animation` est True).
+            animation (bool): Indique si l'extraction de sprite doit se faire à partir d'une animation.
+            info (list): Une liste de clés permettant de naviguer dans les données de la feuille de sprite.
+
+        Returns:
+            pygame.Surface: L'image du sprite.
+        """
         if animation:
             sprite = self.data[animation_name][frame]["frame"]
         else:
