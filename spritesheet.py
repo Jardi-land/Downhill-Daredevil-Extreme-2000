@@ -48,7 +48,6 @@ class SpriteSheet:
         Returns:
             None
         """
-
         self.filename = filepath
         self.sprite_sheet = al.im_load(filepath).convert_alpha()
         self.meta_data = jsonfile
@@ -57,6 +56,18 @@ class SpriteSheet:
         f.close()
 
     def get_sprite(self, x: int, y: int, w: int, h: int):
+        """
+        Retourne une surface pygame contenant une image sprite de la sprite sheet.
+
+        Args:
+            x (int): la coordonnée x du coin supérieur gauche de la zone de la sprite sheet où se trouve l'image sprite.
+            y (int): la coordonnée y du coin supérieur gauche de la zone de la sprite sheet où se trouve l'image sprite.
+            w (int): la largeur de la zone de la sprite sheet où se trouve l'image sprite.
+            h (int): la hauteur de la zone de la sprite sheet où se trouve l'image sprite.
+
+        Returns:
+            pygame.Surface: une surface pygame contenant l'image sprite extraite de la sprite sheet.
+        """
         sprite = pygame.Surface((w, h)).convert_alpha()
         sprite.blit(self.sprite_sheet, (0, 0), (x, y, w, h))
         return sprite
