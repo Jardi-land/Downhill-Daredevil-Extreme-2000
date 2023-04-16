@@ -9,7 +9,7 @@ import webbrowser  # Import de la librairie webbrowserß
 from datetime import datetime as dt  # Import de la librairie datetime
 
 import alias as al
-# from settings import * (future module)
+from settings import *
 
 
 def main(crash_report: str) -> None:

@@ -12,7 +12,7 @@ import traceback  # Import de la librairie traceback
 # import crash_catch (future module)
 import alias as al
 from input import Input_global
-# from settings import * (future module)
+from settings import *
 from debug import debug_overlay
 
 
