@@ -50,16 +50,6 @@ class SpriteSheet:
     """
 
     def __init__(self, filepath, jsonfile):
-        """
-        Initialise une instance de la classe spritesheet.
-
-        Parameters:
-        -----------
-        filepath : str
-            Le chemin d'accès du fichier de la feuille de sprites.
-        jsonfile : str
-            Le chemin d'accès du fichier JSON contenant les informations sur la feuille de sprites.
-        """
         self.filename = filepath
         self.sprite_sheet = al.im_load(filepath).convert_alpha()
         self.meta_data = jsonfile
