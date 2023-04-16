@@ -60,6 +60,15 @@ class Font:
         self.__resize()
 
     def __resize(self):
+        """
+        Redimensionne les surfaces de lettres dans le dictionnaire à l'échelle spécifiée.
+
+        Args:
+            None
+
+        Returns:
+            None
+        """
         for surface in self.surface_dict:
             _ = (self.surface_dict[surface].get_width(
             ) * self.scale, self.surface_dict[surface].get_height() * self.scale)
