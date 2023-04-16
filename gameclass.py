@@ -11,6 +11,7 @@ import alias as al
 class GameClass:
     def __init__(self) -> None:
         self.surface = pygame.Surface((1920, 1080))
+        self.surface.fill((0, 0, 0, 0))
         self.surface_scale = self.surface.copy()
 
         self.screen_size = (1920, 1080)
