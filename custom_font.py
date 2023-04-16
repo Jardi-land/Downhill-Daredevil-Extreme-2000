@@ -77,6 +77,16 @@ class Font:
             del _
 
     def render(self, string: str = "", catch: str = ""):
+        """
+        Rend une surface de texte à partir d'une chaîne de caractères spécifiée.
+
+        Args:
+            string (str, optionnel): La chaîne de caractères à utiliser pour le texte. Par défaut, "".
+            catch (str, optionnel): Le caractère à utiliser pour remplacer les lettres manquantes. Par défaut, "".
+
+        Returns:
+            pygame.Surface: Une surface de texte contenant la chaîne de caractères spécifiée.
+        """
         surface_size = pygame.math.Vector2(0, 14*self.scale)
         for letter in string:
             if letter in self.possible_letters:
