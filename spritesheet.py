@@ -93,7 +93,7 @@ class SpriteSheet:
 
     def parse_sprite(self, animation_name="", frame="", animation=False, info=[]):
         """Analyse les données de la feuille de sprites et renvoie le sprite correspondant en tant qu'image.
-        
+
         Parameters:
         -----------
         animation_name : str, optional
@@ -104,7 +104,7 @@ class SpriteSheet:
             Un indicateur indiquant si le sprite est destiné à être utilisé dans une animation.
         info : list, optional
             Une liste contenant les clés du dictionnaire de données correspondant à l'emplacement du sprite.
-            
+
         Returns:
         --------
         image : pygame.Surface
@@ -121,6 +121,3 @@ class SpriteSheet:
         x, y, w, h = sprite["x"], sprite["y"], sprite["w"], sprite["h"]
         image = self.get_sprite(x, y, w, h)
         return image
-
-
-SpriteSheet.get_sprite
