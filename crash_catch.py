@@ -13,7 +13,15 @@ import alias as al
 
 
 def main(crash_report: str) -> None:
+    """
+    Affiche une fenêtre d'erreur en cas de crash du programme. Ouvre automatiquement l'application de messagerie avec un nouveau message contenant un rapport d'erreur.
 
+    Args:
+        crash_report (str): Le message d'erreur à inclure dans le rapport envoyé par email.
+
+    Returns:
+        None.
+    """
     window = pygame.display.set_mode((300, 150))
 
     pygame.display.set_caption("Crash Report - Lz_framework")
