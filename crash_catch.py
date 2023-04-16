@@ -44,7 +44,7 @@ def main(crash_report: str) -> None:
 
     # Render du texte
     font_render = font.render(
-        f"{window_name} a rencontré une", True, pygame.Color(255, 255, 255))
+        f"{window_name[0:14]}... a rencontré une", True, pygame.Color(255, 255, 255))
     font_render_2 = font.render(
         f"erreur durant son", True, pygame.Color(255, 255, 255))
     font_render_2_2 = font.render(
