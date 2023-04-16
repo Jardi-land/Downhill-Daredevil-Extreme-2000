@@ -11,32 +11,22 @@ from spritesheet import SpriteSheet
 
 class Font:
     """
-    Une classe représentant une police de caractères.
-
-    Parameters:
-    -----------
-    ss : SpriteSheet
-        L'objet SpriteSheet contenant les images des caractères de la police.
-    scale : int, optional
-        L'échelle à appliquer à la police de caractères.
+    Classe pour créer des surfaces de texte à partir d'un SpriteSheet.
 
     Attributes:
-    -----------
-    spritesheet : SpriteSheet
-        L'objet SpriteSheet contenant les images des caractères de la police.
-    scale : int
-        L'échelle à appliquer à la police de caractères.
-    space : int
-        L'espace entre chaque caractère.
-    surface_dict : dict
-        Un dictionnaire contenant les surfaces Pygame de chaque caractère.
-    possible_letters : list
-        Une liste de tous les caractères possibles dans la police de caractères.
+        spritesheet (SpriteSheet): Le SpriteSheet à utiliser pour le texte.
+        scale (int): L'échelle à utiliser pour le texte. Par défaut, 1.
+        space (int): L'espace à utiliser entre les lettres. Par défaut, 0.
+        surface_dict (dict): Un dictionnaire contenant des surfaces de lettres.
+        possible_letters (list): Une liste contenant toutes les lettres possibles.
 
     Methods:
-    --------
-    render(string: str = "", catch: str = "") -> pygame.Surface:
-        Rend la chaîne de caractères donnée sous forme de surface Pygame.
+        __init__(self, ss: SpriteSheet, scale: int = 1) -> None:
+            Initialise la classe Font avec le SpriteSheet et l'échelle spécifiés.
+        __resize(self) -> None:
+            Redimensionne les surfaces de lettres dans le dictionnaire à l'échelle spécifiée.
+        render(self, string: str = "", catch: str = "") -> pygame.Surface:
+            Rend une surface de texte à partir d'une chaîne de caractères spécifiée.
     """
 
     def __init__(self,
@@ -61,7 +51,6 @@ class Font:
         self.__resize()
 
     def __resize(self):
-        """Redimensionne les surfaces Pygame de chaque caractère en fonction de l'échelle de la police."""
         for surface in self.surface_dict:
             _ = (self.surface_dict[surface].get_width(
             ) * self.scale, self.surface_dict[surface].get_height() * self.scale)
@@ -70,21 +59,6 @@ class Font:
             del _
 
     def render(self, string: str = "", catch: str = ""):
-        """
-        Rend la chaîne de caractères donnée sous forme de surface Pygame.
-
-        Parameters:
-        -----------
-        string : str, optional
-            La chaîne de caractères à rendre.
-        catch : str, optional
-            Le caractère de remplacement à utiliser si un caractère non pris en charge est rencontré.
-
-        Returns:
-        --------
-        surface : pygame.Surface
-            Une surface Pygame contenant la chaîne de caractères rendue.
-        """
         surface_size = pygame.math.Vector2(0, 14*self.scale)
         for letter in string:
             if letter in self.possible_letters:
