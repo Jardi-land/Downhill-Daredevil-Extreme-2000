@@ -32,7 +32,16 @@ class Font:
     def __init__(self,
                  ss: SpriteSheet,
                  scale: int = 1) -> None:
+        """
+        Initialise la classe Font avec le SpriteSheet et l'échelle spécifiés.
 
+        Args:
+            ss (SpriteSheet): Le SpriteSheet à utiliser pour le texte.
+            scale (int, optionnel): L'échelle à utiliser pour le texte. Par défaut, 1.
+
+        Returns:
+            None
+        """
         self.spritesheet = ss
 
         self.scale = scale
