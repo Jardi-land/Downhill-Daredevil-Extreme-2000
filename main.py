@@ -9,6 +9,7 @@ import os  # Import de la librairie os
 import platform  # Import de la librairie platform
 import traceback  # Import de la librairie traceback
 
+from gameclass import GameClass
 import crash_catch
 import alias as al
 from settings import *
@@ -91,7 +92,7 @@ def game_loop(fullscreen: bool = False,
 
     # Object Game class ici
     # ----------------------
-
+    Game = GameClass()
     # ----------------------
 
     # Une fois que le jeu est prêt, on lance la boucle principale
@@ -100,7 +101,7 @@ def game_loop(fullscreen: bool = False,
         for event in pygame.event.get():
             # Si l'événement est VIDEORESIZE, on affiche les nouvelles dimensions de la fenêtre
             if event.type == VIDEORESIZE:
-                print(event.w, event.h)
+                Game.screen_size = (event.w, event.h)
             # Si l'événement est QUIT, on quitte le jeu et python
             if event.type == QUIT:
                 pygame.quit()
