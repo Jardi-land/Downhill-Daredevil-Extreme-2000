@@ -10,6 +10,34 @@ from spritesheet import SpriteSheet
 
 
 class Font:
+    """Une classe représentant une police de caractères.
+
+    Parameters:
+    -----------
+    ss : SpriteSheet
+        L'objet SpriteSheet contenant les images des caractères de la police.
+    scale : int, optional
+        L'échelle à appliquer à la police de caractères.
+
+    Attributes:
+    -----------
+    spritesheet : SpriteSheet
+        L'objet SpriteSheet contenant les images des caractères de la police.
+    scale : int
+        L'échelle à appliquer à la police de caractères.
+    space : int
+        L'espace entre chaque caractère.
+    surface_dict : dict
+        Un dictionnaire contenant les surfaces Pygame de chaque caractère.
+    possible_letters : list
+        Une liste de tous les caractères possibles dans la police de caractères.
+
+    Methods:
+    --------
+    render(string: str = "", catch: str = "") -> pygame.Surface:
+        Rend la chaîne de caractères donnée sous forme de surface Pygame.
+    """
+
     def __init__(self,
                  ss: SpriteSheet,
                  scale: int = 1) -> None:
