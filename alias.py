@@ -4,6 +4,8 @@
 # ------------------
 
 import pygame  # Import de la libraire pygame
+import os
+import sys
 
 
 def im_load(path: str = "") -> pygame.Surface:
@@ -31,3 +33,15 @@ def im_scale(image: pygame.Surface, size: tuple = (0, 0)) -> pygame.Surface:
         pygame.Surface: La surface Pygame redimensionnée.
     """
     return pygame.transform.scale(image, size)
+
+def abso_path(path: str) -> str:
+    """
+    Transforme un chemin d'accés relatif en chemin d'accés absolut
+
+    Args:
+        path (str): Le chemin d'accés à modifier
+
+    Returns:
+        str: Le chemin d'accés absolut
+    """
+    return os.path.join(os.path.dirname(sys.argv[0]), path)
