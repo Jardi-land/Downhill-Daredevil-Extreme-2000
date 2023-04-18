@@ -44,4 +44,4 @@ def abso_path(path: str) -> str:
     Returns:
         str: Le chemin d'accés absolut
     """
-    return os.path.join(os.path.dirname(sys.argv[0]), path)
+    return os.path.abspath(path)
