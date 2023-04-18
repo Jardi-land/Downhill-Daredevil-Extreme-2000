@@ -34,7 +34,7 @@ def im_scale(image: pygame.Surface, size: tuple = (0, 0)) -> pygame.Surface:
     """
     return pygame.transform.scale(image, size)
 
-def abso_path(path: str) -> str:
+def abs_path(path: str) -> str:
     """
     Transforme un chemin d'accés relatif en chemin d'accés absolut
 
