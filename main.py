@@ -75,8 +75,7 @@ def game_loop(fullscreen: bool = False,
         # Dans le cas icon_type = 2, une icône est chargée pour Windows et une autre pour les autres plateformes
         case 2:
             if icon_path == {} or icon_path is None:
-                raise ValueError(
-                    "Gameloop.py | icon_path must be a dictionary (refer to the wiki)")
+                raise ValueError("icon_path must be a dictionary")
             icon_path = icon_path["Windows" if platform.system() == "Windows"
                                   else "other"]
 
@@ -87,8 +86,7 @@ def game_loop(fullscreen: bool = False,
 
         # Dans le cas icon_type est différent de 0, 1 ou 2, une erreur est levée
         case other:
-            raise ValueError(
-                f"Gameloop.py | icon_type must be 0, 1 or 2 not {other}")
+            raise ValueError(f"icon_type must be 0, 1 or 2 not {other}")
 
     # Object Game class ici
     # ----------------------
