@@ -6,6 +6,8 @@
 
 import pygame  # Import de la librairie pygame
 
+from spritesheet import SpriteSheet
+
 
 class Player:
     def __init__(self) -> None:
