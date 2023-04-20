@@ -139,7 +139,7 @@ if __name__ == "__main__":
                   name=f"{window_name}",
                   mouse_visible=True,
                   icon_type=2,
-                  icon_path={"Windows": al.path("file/icon/png/icon_win.png"), "other": al.path("file/icon/png/icon_osx.png")})
+                  icon_path={"Windows": al.path("files/icon/png/icon_win.png"), "other": al.path("files/icon/png/icon_osx.png")})
     # Si une erreur est levée, on la capture et on la transmet à crash_catch
     except Exception as e:
         crash_catch.main(crash_report=traceback.format_exc())

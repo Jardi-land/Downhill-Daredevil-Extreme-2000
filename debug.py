@@ -36,7 +36,7 @@ class Debug:
         self.dict = {}
 
         # Création de la police pour afficher le texte
-        self.font = pygame.font.Font(al.path("file/font/TTF/KenneyMini.ttf"), 15)
+        self.font = pygame.font.Font(al.path("files/font/TTF/KenneyMini.ttf"), 15)
 
     def update(self, text: str = ""):
         """
