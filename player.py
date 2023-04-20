@@ -7,6 +7,7 @@
 import pygame  # Import de la librairie pygame
 
 from spritesheet import SpriteSheet
+import alias as al
 
 
 class Player:
