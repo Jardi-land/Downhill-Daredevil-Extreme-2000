@@ -5,6 +5,7 @@
 
 
 import pygame  # Import de la librairie pygame
+import json  # Import de la librairie json
 
 from spritesheet import SpriteSheet
 import alias as al
