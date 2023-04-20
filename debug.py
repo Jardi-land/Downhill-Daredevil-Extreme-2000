@@ -61,7 +61,7 @@ class Debug:
             None
         """
         # Réinitialisation de la surface
-        self.surface.fill((0, 0, 0, 0))
+        self.surface.fill((0, 0, 0))
 
         # Affichage des textes
         for k in self.dict.keys():
