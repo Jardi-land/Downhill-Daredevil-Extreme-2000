@@ -39,7 +39,7 @@ def main(crash_report: str) -> None:
         (window.get_width()/2, window.get_height()/2)).convert_alpha()
 
     # Définition de la police d'écriture
-    font = pygame.font.Font("file/font/TTF/KenneyMini.ttf",
+    font = pygame.font.Font(al.path("file/font/TTF/KenneyMini.ttf"),
                             8, bold=False, italic=False)
 
     # Render du texte
