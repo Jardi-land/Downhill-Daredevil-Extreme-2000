@@ -5,3 +5,8 @@
 
 
 import pygame  # Import de la librairie pygame
+
+
+class Player:
+    def __init__(self) -> None:
+        pass
