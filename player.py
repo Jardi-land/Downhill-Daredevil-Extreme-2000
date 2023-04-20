@@ -13,4 +13,6 @@ import alias as al
 
 class Player:
     def __init__(self) -> None:
-        pass
+        with open(al.path("files/players/data.json"), "r") as file:
+            self.spritesheet_data = json.load(file)
+        file.close()
