@@ -13,4 +13,5 @@ import alias as al
 
 class Player:
     def __init__(self) -> None:
-        self.spritesheet = SpriteSheet(al.path("files/players/texture/players.png"), al.path("files/players/data.json"))
+        self.spritesheet = SpriteSheet(al.path(
+            "files/players/texture/players.png"), al.path("files/players/data.json"))
