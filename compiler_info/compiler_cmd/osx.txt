@@ -1,0 +1,1 @@
+python3 -m nuitka --standalone --onefile --show-progress --macos-create-app-bundle --output-dir=./compiled_osx/ --include-data-dir=./files/=files --macos-disable-console --macos-app-icon=./files/icon/png/icon_osx.png --macos-app-version=1.0 --macos-app-name="Downhill Daredevil Extreme 2000" --enable-plugin=numpy main.py
