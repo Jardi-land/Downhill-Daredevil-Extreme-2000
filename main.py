@@ -142,4 +142,5 @@ if __name__ == "__main__":
                   icon_path={"Windows": al.path("files/icon/png/icon_win.png"), "other": al.path("files/icon/png/icon_osx.png")})
     # Si une erreur est levée, on la capture et on la transmet à crash_catch
     except Exception as e:
+        print(crash_report=traceback.format_exc())
         crash_catch.main(crash_report=traceback.format_exc())
