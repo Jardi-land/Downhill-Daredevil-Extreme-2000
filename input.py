@@ -97,7 +97,7 @@ class Input:
         self.list_end["keyboard"] = pygame.key.get_pressed()
         self.list_end["mouse"]["buttons"] = pygame.mouse.get_pressed()
 
-    def test_key(self, key: str) -> bool:
+    def __test_key(self, key: str) -> bool:
         """
         Teste si une touche existe sur le clavier.
 
@@ -132,7 +132,7 @@ class Input:
         Raises:
             ValueError: Si le nom de la touche n'est pas reconnu.
         """
-        if self.test_key(key):
+        if self.__test_key(key):
             return self.list_begin["keyboard"][self.keyboard.key_code.get(key)]
 
     def get_released(self, key: str) -> bool:
@@ -149,7 +149,7 @@ class Input:
             ValueError: Si la touche n'est pas trouvée dans la liste des touches du clavier.
 
         """
-        if self.test_key(key):
+        if self.__test_key(key):
             if self.list_end["keyboard"][self.keyboard.key_code.get(key)] and not self.list_begin["keyboard"][self.keyboard.key_code.get(key)]:
                 return True
             else:
