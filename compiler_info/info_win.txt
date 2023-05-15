@@ -1,0 +1,1 @@
+Pour windows il faut ajouter les fichiers dans le dossier du .exe
