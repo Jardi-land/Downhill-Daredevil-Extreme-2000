@@ -18,6 +18,9 @@ class Map:
 
         self.surfaces = {"down": pygame.Surface((self.map_data.width * self.map_data.tilewidth * self.scale, self.map_data.height * self.map_data.tileheight * self.scale)).convert_alpha(),
                          "up": pygame.Surface((self.map_data.width * self.map_data.tilewidth * self.scale, self.map_data.height * self.map_data.tileheight * self.scale)).convert_alpha()}
+        
+        self.surfaces["down"].fill((0, 0, 0, 0))
+        self.surfaces["up"].fill((0, 0, 0, 0))
 
         self.layers = {"background": self.map_data.get_layer_by_name("background"),
                        "obstacle": self.map_data.get_layer_by_name("obstacle")}
