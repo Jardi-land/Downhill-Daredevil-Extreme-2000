@@ -41,7 +41,7 @@ class Player:
         
         self.rect = pygame.rect.Rect(0, 0, self.image.get_width(), self.image.get_height()/2)
         
-        self.spawn_pos = pygame.math.Vector2(1920/2, 1200/2)
+        self.spawn_pos = pygame.math.Vector2(1920/2, 900/2)
         self.pos = self.spawn_pos
         
         self.left_rect = None
