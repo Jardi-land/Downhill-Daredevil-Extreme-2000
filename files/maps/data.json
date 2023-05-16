@@ -1,0 +1,32 @@
+{
+    "map-001": {
+        "weight": 4
+    },
+    "map-002": {
+        "weight": 4
+    },
+    "map-003": {
+        "weight": 3
+    },
+    "map-004": {
+        "weight": 2
+    },
+    "map-005": {
+        "weight": 1
+    },
+    "map-006": {
+        "weight": 3
+    },
+    "map-007": {
+        "weight": 4
+    },
+    "map-008": {
+        "weight": 4
+    },
+    "map-009": {
+        "weight": 2
+    },
+    "map-010": {
+        "weight": 4
+    }
+}
