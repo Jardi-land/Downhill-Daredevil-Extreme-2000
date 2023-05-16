@@ -4,7 +4,6 @@
 # ------------------
 
 import pygame  # Import de la librairie pygame
-import json  # Import de la librairie json
 from pytmx.util_pygame import load_pygame  # Import de la librairie pytmx
 
 import alias as al
@@ -22,9 +21,14 @@ class Map:
 
         self.layers = {"background": self.map_data.get_layer_by_name("background"),
                        "obstacle": self.map_data.get_layer_by_name("obstacle")}
+        
         self.__check_deco_layer()
 
         self.__draw()
+        
+        self.colliders_list = []
+        
+        self.__set_colliders()
 
     def __check_deco_layer(self):
         for layer in self.map_data.visible_layers:
@@ -44,3 +48,10 @@ class Map:
                     case "deco":
                         self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
                         )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
+                        
+    def __set_colliders(self):
+        for gid, tile_obj_g in self.map_data.get_tile_colliders():
+            for collider in tile_obj_g:
+                for x,y,layer_index in self.map_data.get_tile_locations_by_gid(gid):
+                    print(collider.x, collider.y)
+                    self.colliders_list.append({"pos": (x*16*self.scale + collider.x*self.scale, y*16*self.scale + collider.y*self.scale), "rect":pygame.Rect(collider.x*self.scale, collider.y*self.scale, collider.width*self.scale, collider.height*self.scale)})

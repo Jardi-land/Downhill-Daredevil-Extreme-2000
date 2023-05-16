@@ -6,6 +6,7 @@
 import pygame  # Import de la libraire pygame
 
 import alias as al
+from input import Input_global
 
 
 class Debug:
@@ -34,6 +35,8 @@ class Debug:
 
         # Création du dictionnaire qui contiendra les textes à afficher
         self.dict = {}
+        
+        self.debug_mode = False
 
         # Création de la police pour afficher le texte
         self.font = pygame.font.Font(al.path("files/font/TTF/KenneyMini.ttf"), 15)
@@ -49,6 +52,10 @@ class Debug:
             None
         """
         self.dict[len(self.dict.keys())] = str(text)
+        if Input_global.get_pressed("p"):
+            self.debug_mode = True
+        if Input_global.get_released("p"):
+            self.debug_mode = False
 
     def draw(self, surface: pygame.Surface):
         """

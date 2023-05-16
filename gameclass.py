@@ -6,6 +6,7 @@
 import pygame  # Import de la libraire pygame
 
 import alias as al
+from level import Level
 
 
 class GameClass:
@@ -30,6 +31,8 @@ class GameClass:
         self.surface_scale = self.surface.copy()
 
         self.screen_size = (1920, 1080)
+        
+        self.level = Level()
 
     def __draw_on_surface(self) -> None:
         """
@@ -40,7 +43,7 @@ class GameClass:
         """
         # Draw the Game on self.surface
 
-        pass
+        self.surface.blit(self.level.update(), (0, 0))
 
     def __resize(self) -> None:
         """
@@ -66,4 +69,4 @@ class GameClass:
         """
         self.__draw_on_surface()
         self.__resize()
-        surface.blit(self.surface, (0, 0))
+        surface.blit(self.surface_scale, (0, 0))

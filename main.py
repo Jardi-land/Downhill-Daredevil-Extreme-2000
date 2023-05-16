@@ -114,6 +114,7 @@ def game_loop(fullscreen: bool = False,
         # -----------------------------
         Game.draw(window)
         Debug_overlay.update(f"FPS: {clock.get_fps():.2f}")
+        pygame.display.set_caption(f"FPS: {clock.get_fps():.2f}")
         # -----------------------------
 
         # Update de l'input
@@ -123,7 +124,7 @@ def game_loop(fullscreen: bool = False,
 
         # Debug overlay ici (si besoin)
         # -----------------------
-        Debug_overlay.draw(window)
+        #Debug_overlay.draw(window)
         # -----------------------
 
         # Update de la fenêtre
