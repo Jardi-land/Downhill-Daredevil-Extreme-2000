@@ -72,9 +72,9 @@ class GameClass:
             if self.menu.update() is not None:
                 self.clicked = True
                 
-        if self.button_disappear == 0:
-            self.in_game = True
-            self.level.player.current_speed = self.level.player.initial_speed
+            if self.button_disappear == 0:
+                self.in_game = True
+                self.level.player.current_speed = self.level.player.initial_speed
     
 
     def draw(self, surface: pygame.Surface) -> None:

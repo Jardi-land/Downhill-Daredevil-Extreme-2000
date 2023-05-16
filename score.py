@@ -18,6 +18,7 @@ class Score:
         self.font = Font(self.font_spritesheet, 6)
         
         self.score = 0
+        self.score_interne = 0
         
         self.score_surface = self.font.render(str(self.score))
         
