@@ -69,6 +69,7 @@ class SpriteSheet:
             pygame.Surface: une surface pygame contenant l'image sprite extraite de la sprite sheet.
         """
         sprite = pygame.Surface((w, h)).convert_alpha()
+        sprite.fill((0, 0, 0, 0))
         sprite.blit(self.sprite_sheet, (0, 0), (x, y, w, h))
         return sprite
 
