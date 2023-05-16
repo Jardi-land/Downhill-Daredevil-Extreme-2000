@@ -35,6 +35,10 @@ class GameClass:
         
         self.menu = Menu()
         self.level = Level()
+        
+        self.in_game = False
+        self.clicked = False
+        self.button_disappear = 10
 
     def __draw_on_surface(self) -> None:
         """
@@ -45,8 +49,9 @@ class GameClass:
         """
         # Draw the Game on self.surface
 
-        #self.surface.blit(self.level.update(), (0, 0))
-        self.surface.blit(self.menu.update(), (0, 0))
+        self.surface.blit(self.level.update(), (0, 0))
+        if not self.in_game:
+            self.surface.blit(self.menu.draw(), (0, 0))
 
     def __resize(self) -> None:
         """
@@ -59,6 +64,17 @@ class GameClass:
             self.surface_scale = al.im_scale(self.surface, self.screen_size)
         else:
             self.surface_scale = self.surface.copy()
+            
+    def update(self):
+        if not self.in_game:
+            if self.clicked:
+                self.button_disappear -= 1
+            if self.menu.update() is not None:
+                self.clicked = True
+                
+        if self.button_disappear == 0:
+            self.in_game = True
+    
 
     def draw(self, surface: pygame.Surface) -> None:
         """
@@ -72,4 +88,5 @@ class GameClass:
         """
         self.__draw_on_surface()
         self.__resize()
+        self.update()
         surface.blit(self.surface_scale, (0, 0))

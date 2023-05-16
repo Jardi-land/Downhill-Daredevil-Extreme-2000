@@ -36,7 +36,7 @@ class Player:
 
         self.image = self.images[self.player_type][self.player_state]
         
-        self.initial_speed = 10
+        self.initial_speed = 0
         self.current_speed = self.initial_speed
         
         self.rect = pygame.rect.Rect(0, 0, self.image.get_width(), self.image.get_height()/2)

@@ -18,17 +18,21 @@ class Menu:
         
         self.font_spritesheet = SpriteSheet(al.path("files/font/custom/tilesheet.png"), al.path("files/font/custom/data.json"))
         
-        self.font = Font(self.font_spritesheet, 1)
+        self.font = Font(self.font_spritesheet, 1.5)
         
         self.ui_spritesheet = SpriteSheet(al.path("files/maps/texture/tilemap.png"), al.path("files/ui/data.json"))
         
         self.play_text = self.font.render("PLAY", "#")
         
-        self.play_button = Button(self.play_text, (480/2, 270/2), self.ui_spritesheet, "play")
+        self.play_button = Button(self.play_text, (480/2, 355/2), self.ui_spritesheet, "play")
         
-        self.play_button = Button(self.play_text, (480/2 - self.play_button.draw().get_width()/2, 270/2 - self.play_button.draw().get_height()/2), self.ui_spritesheet, "play")
+        self.play_button = Button(self.play_text, (480/2 - self.play_button.draw().get_width()/2, 355/2 - self.play_button.draw().get_height()/2), self.ui_spritesheet, "play")
         
     def update(self):
+        if self.play_button.get_action() is not None:
+            return self.play_button.get_action()
+        
+    def draw(self):
         self.surface.blit(self.play_button.draw(), (self.play_button.pos[0], self.play_button.pos[1]))
         return al.im_scale(self.surface, (1920, 1080))
 
