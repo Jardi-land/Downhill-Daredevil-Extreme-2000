@@ -23,21 +23,24 @@ class Map:
         self.layers = {"background": self.map_data.get_layer_by_name("background"),
                        "obstacle": self.map_data.get_layer_by_name("obstacle")}
         self.__check_deco_layer()
-        
+
         self.__draw()
 
     def __check_deco_layer(self):
         for layer in self.map_data.visible_layers:
             if layer.name == "deco":
                 self.layers["deco"] = layer
-                
+
     def __draw(self):
         for layer in self.layers:
-            for x,y,surf in self.layers[layer].tiles():
+            for x, y, surf in self.layers[layer].tiles():
                 match layer:
                     case "background":
-                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height()*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
+                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
+                        )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
                     case "obstacle":
-                        self.surfaces["up"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height()*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
+                        self.surfaces["up"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
+                        )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
                     case "deco":
-                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height()*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
+                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
+                        )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
