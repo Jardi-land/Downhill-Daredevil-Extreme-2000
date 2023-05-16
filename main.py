@@ -107,7 +107,7 @@ def game_loop(fullscreen: bool = False,
 
         # Update de l'input
         # -----------------
-        Input_global.frame_begin()
+        Input_global.frame_begin(window.get_size())
         # -----------------
 
         # Game class object update here

@@ -69,8 +69,10 @@ class Input:
         # Initialisation des dictionnaires
         self.list_end["keyboard"] = pygame.key.get_pressed()
         self.list_end["mouse"]["buttons"] = pygame.mouse.get_pressed()
+        
+        self.window_size = pygame.math.Vector2(0, 0)
 
-    def frame_begin(self) -> None:
+    def frame_begin(self, size) -> None:
         """
         Met à jour les états du clavier et de la souris et stocke les valeurs actuelles dans la liste de début.
 
@@ -83,6 +85,8 @@ class Input:
         self.list_begin["keyboard"] = pygame.key.get_pressed()
         self.list_begin["mouse"]["pos"] = pygame.mouse.get_pos()
         self.list_begin["mouse"]["buttons"] = pygame.mouse.get_pressed()
+        self.window_size.x, self.window_size.y = size[0], size[1]
+        
 
     def frame_end(self) -> None:
         """
@@ -211,6 +215,9 @@ class Input:
         else:
             raise ValueError(
                 f"Input.py | L'indice du bouton de la souris doit être 0, 1 ou 2 et non pas {index}.")
+    
+    def scale_converter(self, base_scale, pos):
+        return (self.window_size.x*(pos[0] / base_scale[0]), self.window_size.y*(pos[1] / base_scale[1]))
 
 
 # Création d'une instance de la classe Input
