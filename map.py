@@ -4,6 +4,8 @@
 # ------------------
 
 import pygame # Import de la librairie pygame
+import json # Import de la librairie json
+from pytmx.util_pygame import load_pygame # Import de la librairie pytmx
 
 
 class map:
