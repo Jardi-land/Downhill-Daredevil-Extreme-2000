@@ -66,6 +66,7 @@ class Level:
     def forward(self):
         self.camera.vector_offset.y -= self.player.current_speed
         self.score.score += self.player.current_speed/100
+        self.camera.score = self.score.update()
         
     def send_player_rect(self):
         self.camera.player_left_rect = self.player.left_rect
@@ -83,4 +84,4 @@ class Level:
         self.camera.player_pos = self.player.pos
         self.send_player_rect()
         self.forward()
-        return self.score.update(self.camera.draw(self.chunk_list))
+        return self.camera.draw(self.chunk_list)

@@ -55,5 +55,7 @@ class Camera:
             if self.player_right_rect is not None:
                 pygame.draw.rect(self.surface, (0, 255, 0), self.player_right_rect)
             pygame.draw.rect(self.surface, (0, 255, 0), self.player_down_rect)
+        
+        self.surface.blit(self.score, (self.surface.get_width() - self.score.get_width() - 10, 10))
 
         return self.surface
