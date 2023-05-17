@@ -8,10 +8,29 @@ import pygame # Import pygame library
 from pygame import mixer # Import mixer from pygame library
 
 
-import alias as al
-from spritesheet import SpriteSheet
+import alias as al # Import alias.py
+from spritesheet import SpriteSheet # Import SpriteSheet class from spritesheet.py
 
 def palette_swap(surf, old_color, new_color):
+    """Effectue un échange de palette sur une surface donnée.
+
+    Args:
+        surf (pygame.Surface): La surface sur laquelle effectuer l'échange de palette.
+        old_color (Tuple[int, int, int]): La couleur existante à remplacer, spécifiée en tant que tuple (R, G, B).
+        new_color (Tuple[int, int, int]): La nouvelle couleur à utiliser, spécifiée en tant que tuple (R, G, B).
+
+    Returns:
+        pygame.Surface: Une copie de la surface modifiée avec les couleurs remplacées.
+
+    Raises:
+        None
+
+    Exemple:
+        surface = pygame.image.load('image.png')
+        ancienne_couleur = (255, 0, 0)  # Rouge
+        nouvelle_couleur = (0, 255, 0)  # Vert
+        nouvelle_surface = palette_swap(surface, ancienne_couleur, nouvelle_couleur)
+    """
     img_copy = pygame.Surface(surf.get_size())
     img_copy.fill(new_color)
     surf.set_colorkey(old_color)
@@ -20,6 +39,26 @@ def palette_swap(surf, old_color, new_color):
 
 
 class Button:
+    """Représente un bouton interactif avec du texte sur une surface.
+
+    Attributes:
+        text (pygame.Surface): La surface contenant le texte à afficher sur le bouton.
+        pos (tuple): La position du bouton, spécifiée en tant que tuple (x, y).
+        ui_spritesheet (SpriteSheet): La feuille de sprites utilisée pour les éléments graphiques du bouton.
+        action (str): L'action associée au bouton lorsque celui-ci est cliqué.
+        lock (bool): Indique si le bouton est verrouillé ou non.
+
+    Methods:
+        check_mouse(): Vérifie si la souris est positionnée sur le bouton.
+        click_action(): Vérifie si le bouton est cliqué.
+        update(): Met à jour l'apparence du bouton en fonction de son état.
+        get_action(): Renvoie l'action associée au bouton si celui-ci est cliqué.
+        draw(): Dessine le bouton et renvoie sa surface actuelle.
+
+    Example:
+        button = Button(text=my_text_surface, pos=(100, 200), ui_spritesheet=my_spritesheet, action="start_game")
+        button.draw()
+    """
     def __init__(self,
                  text: pygame.Surface = None,
                  pos: tuple = (0, 0), 

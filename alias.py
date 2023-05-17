@@ -4,8 +4,8 @@
 # ------------------
 
 import pygame  # Import de la libraire pygame
-import os
-import sys
+import os  # Import de la librairie os
+import sys  # Import de la librairie sys
 
 
 def im_load(path: str = "") -> pygame.Surface:
@@ -34,6 +34,7 @@ def im_scale(image: pygame.Surface, size: tuple = (0, 0)) -> pygame.Surface:
     """
     return pygame.transform.scale(image, size)
 
+
 def im_turn(image: pygame.Surface, angle: int = 0) -> pygame.Surface:
     """
     Tourne une surface Pygame à l'angle spécifié.
@@ -46,6 +47,7 @@ def im_turn(image: pygame.Surface, angle: int = 0) -> pygame.Surface:
         pygame.Surface: La surface Pygame tournée.
     """
     return pygame.transform.rotate(image, angle)
+
 
 def path(path: str) -> str:
     """

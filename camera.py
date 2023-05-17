@@ -10,6 +10,21 @@ import alias as al
 
 
 class Camera:
+    """Représente la caméra pour afficher le jeu dans une fenêtre.
+
+    Attributes:
+        player_image (pygame.Surface): L'image du joueur.
+        player_spawn_pos (tuple): La position de départ du joueur, spécifiée en tant que tuple (x, y).
+        player_rect (pygame.Rect): Le rectangle englobant du joueur.
+        
+    Methods:
+        calc_vector_offset(): Calcule le décalage vectoriel pour le rendu des chunks.
+        draw(chunk_list): Dessine les éléments du jeu sur la surface de la caméra et renvoie cette surface.
+
+    Example:
+        camera = Camera(player_image=my_player_image, player_spawn_pos=(100, 200), player_rect=my_player_rect)
+        camera.draw(chunk_list=my_chunk_list)
+    """
     def __init__(self, player_image, player_spawn_pos, player_rect) -> None:
         from debug import Debug_overlay
         self.debug = Debug_overlay
