@@ -4,6 +4,9 @@
 # ------------------
 
 import pygame  # Import de la librairie pygame
+from pygame import mixer
+
+import alias as al
 
 
 class Camera:
@@ -15,6 +18,12 @@ class Camera:
         self.player_pos = pygame.math.Vector2(player_spawn_pos[0], player_spawn_pos[1])
         self.player_rect = player_rect
         self.player_status = "alive"
+        
+        mixer.init()
+        
+        self.hit_sound = mixer.Sound(al.path("files/sound/hit.mp3"))
+        
+        self.sound_played = False
 
     def calc_vector_offset(self):
         self.vector_offset = pygame.math.Vector2(0, 0)
@@ -45,6 +54,9 @@ class Camera:
                     rect["rect"].y = rect["pos"][1] + (self.vector_offset.y + (value*chunk.surfaces["up"].get_height()))
                     if self.player_rect.colliderect(rect["rect"]):
                         self.player_status = "dead"
+                        if self.sound_played == False:
+                            self.sound_played = True
+                            mixer.Sound.play(self.hit_sound)
                     if self.debug.debug_mode:
                         pygame.draw.rect(self.surface, (255, 0, 0), rect["rect"])
 

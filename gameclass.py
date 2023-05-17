@@ -41,7 +41,7 @@ class GameClass:
         self.button_disappear = 10
         
         self.show_death_screen = False
-        self.show_death_screen_index = 120
+        self.show_death_screen_index = 90
 
     def __draw_on_surface(self) -> None:
         """
@@ -86,7 +86,7 @@ class GameClass:
             if self.level.player.status == "dead":
                 if self.show_death_screen_index == 0:
                     self.show_death_screen = True
-                    self.show_death_screen_index = 120
+                    self.show_death_screen_index = 90
                     with open(al.path("files/score/best.txt"), "r") as f:
                         self.current_best = int(f.read())
                         if int(self.level.score.score) > self.current_best:
@@ -104,6 +104,7 @@ class GameClass:
             if self.deathscreen.new_game:
                 self.show_death_screen = False
                 self.level = Level()
+                self.menu = Menu()
                 self.in_game = False
                 self.clicked = False
                 self.button_disappear = 10

@@ -5,6 +5,7 @@
 
 
 import pygame # Import pygame library
+from pygame import mixer # Import mixer from pygame library
 
 
 import alias as al
@@ -42,6 +43,10 @@ class Button:
         self.mouse_pos = None
 
         self.size = (self.text.get_width(), self.text.get_height())
+        
+        mixer.init()
+        self.select_sound = mixer.Sound(al.path("files/sound/select.mp3"))
+        self.sound_played = False
 
         self.button_surface_dict = {"corner_top_left": ui_spritesheet.parse_sprite(info=["corner_top_left"]),
                                     "corner_top_right": ui_spritesheet.parse_sprite(info=["corner_top_right"]),
@@ -127,6 +132,9 @@ class Button:
         if True:
             if self.check_mouse():
                 if self.click_action():
+                    if self.sound_played == False:
+                        self.sound_played = True
+                        mixer.Sound.play(self.select_sound)
                     self.current_surface = self.surface_click
                 else: 
                     self.current_surface = self.surface_with_mask

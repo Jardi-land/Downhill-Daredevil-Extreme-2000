@@ -4,6 +4,7 @@
 # ------------------
 
 import pygame  # Import de la libraire pygame
+from pygame import mixer
 from pygame.locals import *  # Import des constantes de pygame
 import os  # Import de la librairie os
 import platform  # Import de la librairie platform
@@ -40,6 +41,7 @@ def game_loop(fullscreen: bool = False,
 
     # Initialisation de pygame
     pygame.init()
+    mixer.init()
 
     # Création de la fenêtre du jeu
     window = pygame.display.set_mode((0, 0),
@@ -56,6 +58,11 @@ def game_loop(fullscreen: bool = False,
 
     # Définition de l'affichage du curseur de la souris
     pygame.mouse.set_visible(mouse_visible)
+    
+    # Musique du jeu
+    mixer.music.load(al.path("files/sound/music/music1.mp3"))
+    mixer.music.set_volume(0.1)
+    mixer.music.play(-1)
 
     # Définition de l'icône de la fenêtre en fonction de icon_type
     match icon_type:
@@ -113,8 +120,6 @@ def game_loop(fullscreen: bool = False,
         # Game class object update here
         # -----------------------------
         Game.draw(window)
-        Debug_overlay.update(f"FPS: {clock.get_fps():.2f}")
-        pygame.display.set_caption(f"FPS: {clock.get_fps():.2f}")
         # -----------------------------
 
         # Update de l'input
