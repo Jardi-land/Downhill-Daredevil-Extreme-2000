@@ -34,6 +34,19 @@ def im_scale(image: pygame.Surface, size: tuple = (0, 0)) -> pygame.Surface:
     """
     return pygame.transform.scale(image, size)
 
+def im_turn(image: pygame.Surface, angle: int = 0) -> pygame.Surface:
+    """
+    Tourne une surface Pygame à l'angle spécifié.
+
+    Args:
+        image (pygame.Surface): La surface Pygame à tourner.
+        angle (int, optionnel): L'angle de rotation de la surface. Par défaut, 0.
+
+    Returns:
+        pygame.Surface: La surface Pygame tournée.
+    """
+    return pygame.transform.rotate(image, angle)
+
 def path(path: str) -> str:
     """
     Connecte le chemin d'accés

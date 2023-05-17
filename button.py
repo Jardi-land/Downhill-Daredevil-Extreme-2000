@@ -23,12 +23,15 @@ class Button:
                  text: pygame.Surface = None,
                  pos: tuple = (0, 0), 
                  ui_spritesheet: SpriteSheet = None, 
-                 action: str = None):
+                 action: str = None,
+                 lock=False):
 
         from input import Input_global
         self.input_global = Input_global
         
         self.text = text
+        
+        self.lock = lock
         
         self.pos = pos
         
@@ -87,7 +90,8 @@ class Button:
 
         self.surface_click.blit(self.mask_surf, (0, 0))
 
-        self.surface.blit(self.text, (4.5, 3))
+        if not self.lock:
+            self.surface.blit(self.text, (4.5, 3))
         self.surface_with_mask.blit(self.text, (4.5, 3))
         self.surface_click.blit(self.text, (4.5, 4))
         
@@ -118,6 +122,8 @@ class Button:
         else: return False
     
     def update(self):
+        if self.lock:
+            return self.surface
         if True:
             if self.check_mouse():
                 if self.click_action():

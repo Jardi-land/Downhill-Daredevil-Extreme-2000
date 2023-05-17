@@ -67,7 +67,7 @@ class Level:
         self.camera.vector_offset.y -= self.player.current_speed
         self.score.score += self.player.current_speed/10
         self.score.score_interne += self.player.current_speed/10
-        if self.score.score_interne > 200:
+        if self.score.score_interne > self.player.current_speed*15:
             self.score.score_interne = 0
             self.player.current_speed += 1
         print(self.score.score)

@@ -6,7 +6,7 @@
 import pygame  # Import de la libraire pygame
 
 import alias as al
-from menu import Menu
+from menu import Menu, DeathScreen
 from level import Level
 
 
@@ -39,6 +39,9 @@ class GameClass:
         self.in_game = False
         self.clicked = False
         self.button_disappear = 10
+        
+        self.show_death_screen = False
+        self.show_death_screen_index = 120
 
     def __draw_on_surface(self) -> None:
         """
@@ -52,6 +55,9 @@ class GameClass:
         self.surface.blit(self.level.update(), (0, 0))
         if not self.in_game:
             self.surface.blit(self.menu.draw(), (0, 0))
+            
+        if self.show_death_screen:
+            self.surface.blit(self.deathscreen.draw(), (0, 0))
 
     def __resize(self) -> None:
         """
@@ -75,7 +81,33 @@ class GameClass:
             if self.button_disappear == 0:
                 self.in_game = True
                 self.level.player.current_speed = self.level.player.initial_speed
-    
+                
+        if not self.show_death_screen:
+            if self.level.player.status == "dead":
+                if self.show_death_screen_index == 0:
+                    self.show_death_screen = True
+                    self.show_death_screen_index = 120
+                    with open(al.path("files/score/best.txt"), "r") as f:
+                        self.current_best = int(f.read())
+                        if int(self.level.score.score) > self.current_best:
+                            with open(al.path("files/score/best.txt"), "w") as i:
+                                i.write(str(int(self.level.score.score)))
+                                self.best_score = int(self.level.score.score)
+                        else:
+                            self.best_score = self.current_best
+                    self.deathscreen = DeathScreen(int(self.level.score.score), self.best_score)
+                self.show_death_screen_index -= 1
+        
+        if self.show_death_screen:
+            if self.deathscreen.update() is not None:
+                self.deathscreen.fade_in = True
+            if self.deathscreen.new_game:
+                self.show_death_screen = False
+                self.level = Level()
+                self.in_game = False
+                self.clicked = False
+                self.button_disappear = 10
+
 
     def draw(self, surface: pygame.Surface) -> None:
         """
