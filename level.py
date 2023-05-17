@@ -65,12 +65,12 @@ class Level:
         
     def forward(self):
         self.camera.vector_offset.y -= self.player.current_speed
-        self.score.score += self.player.current_speed/100
-        self.score.score_interne += self.player.current_speed/100
-        if self.score.score_interne > 20:
+        self.score.score += self.player.current_speed/10
+        self.score.score_interne += self.player.current_speed/10
+        if self.score.score_interne > 200:
             self.score.score_interne = 0
             self.player.current_speed += 1
-        print(self.score.score_interne)
+        print(self.score.score)
         print(self.player.current_speed)
         self.camera.score = self.score.update()
         
