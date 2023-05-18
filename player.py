@@ -39,7 +39,7 @@ class Player:
         self.initial_speed = 10
         self.current_speed = 0
         
-        self.rect = pygame.rect.Rect(0, 0, self.image.get_width(), self.image.get_height()/2)
+        self.rect = pygame.rect.Rect(0, 0, self.image.get_width()- 30, self.image.get_height()/2)
         
         self.spawn_pos = pygame.math.Vector2(1920/2, 900/2)
         self.pos = self.spawn_pos
@@ -50,6 +50,8 @@ class Player:
         self.status = "alive"
         
         self.dead_index = 10
+        
+        self.track = al.im_scale(self.spritesheet.parse_sprite(info=["track"]), (16*6.75, 16*6.75))
         
     def movement(self):
         if not self.pos.x < 50:

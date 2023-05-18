@@ -25,7 +25,7 @@ class Camera:
         camera = Camera(player_image=my_player_image, player_spawn_pos=(100, 200), player_rect=my_player_rect)
         camera.draw(chunk_list=my_chunk_list)
     """
-    def __init__(self, player_image, player_spawn_pos, player_rect) -> None:
+    def __init__(self, player_image, player_spawn_pos, player_rect, player_track) -> None:
         from debug import Debug_overlay
         self.debug = Debug_overlay
         self.surface = pygame.Surface((1920, 1080)).convert_alpha()
@@ -33,6 +33,12 @@ class Camera:
         self.player_pos = pygame.math.Vector2(player_spawn_pos[0], player_spawn_pos[1])
         self.player_rect = player_rect
         self.player_status = "alive"
+        
+        self.player_track = player_track
+        self.surface_track = pygame.Surface((1920, self.player_pos.y - self.player_image.get_height()/2)).convert_alpha()
+        self.surface_track.fill((0, 0, 0, 0))
+        self.surface_track_full = pygame.Surface((1920, self.player_pos.y - self.player_image.get_height()/2)).convert_alpha()
+        self.surface_track_full.fill((0, 0, 0, 0))
         
         mixer.init()
         
@@ -54,6 +60,24 @@ class Camera:
             else:
                 self.surface.blit(chunk.surfaces["down"], (self.vector_offset.x,
                                 self.vector_offset.y + (value*chunk.surfaces["down"].get_height())))
+        
+        #<-- Track zone -->
+        #Blit track static on player
+        self.surface.blit(self.player_track, (self.player_pos.x - self.player_image.get_width()/2, self.player_pos.y - self.player_image.get_height()/2))
+        #Get track moving surface_track
+        self.surface_track.blit(self.player_track, (self.player_pos.x - self.player_image.get_width()/2, self.player_pos.y - self.player_image.get_height()/2 - self.player_speed))
+        #Copy full track and blit higher
+        self.surface_track_full_copy = self.surface_track_full.copy()
+        self.surface_track_full.fill((0, 0, 0, 0))
+        self.surface_track_full.blit(self.surface_track_full_copy, (0, -self.player_speed))
+        #Blit moving track on full track
+        self.surface_track_full.blit(self.surface_track, (0, 0))
+        #Clear moving track
+        self.surface_track.fill((0, 0, 0, 0))
+        #Blit full track on camera surface
+        self.surface.blit(self.surface_track_full, (0, 0))
+        #<-- Track zone -->
+        
         
         self.surface.blit(self.player_image, (self.player_pos.x - self.player_image.get_width()/2, self.player_pos.y - self.player_image.get_height()/2))
         

@@ -21,7 +21,7 @@ class Level:
         self.input_global = Input_global
         
         self.player = Player()
-        self.camera = Camera(self.player.image, self.player.pos, self.player.rect)
+        self.camera = Camera(self.player.image, self.player.pos, self.player.rect, self.player.track)
         self.score = Score()
 
         self.__load_maps()
@@ -51,11 +51,11 @@ class Level:
         self.possible_chunk = []
         
         for map in self.maps:
-            for i in range(self.maps[map]["weight"]*20):
+            for i in range(self.maps[map]["weight"]*3):
                 self.possible_chunk.append(map)
                 random.shuffle(self.possible_chunk)
                     
-        for i in range(100): #620
+        for i in range(93):
             self.chunk_list.append(Map(al.path(f"files/maps/tmx/{self.possible_chunk[0]}.tmx")))
             self.possible_chunk.pop(0)
             
@@ -70,8 +70,6 @@ class Level:
         if self.score.score_interne > self.player.current_speed*15:
             self.score.score_interne = 0
             self.player.current_speed += 1
-        print(self.score.score)
-        print(self.player.current_speed)
         self.camera.score = self.score.update()
         
     def send_player_rect(self):
@@ -90,4 +88,5 @@ class Level:
         self.camera.player_pos = self.player.pos
         self.send_player_rect()
         self.forward()
+        self.camera.player_speed = self.player.current_speed
         return self.camera.draw(self.chunk_list)
