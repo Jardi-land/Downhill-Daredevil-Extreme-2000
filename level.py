@@ -55,7 +55,7 @@ class Level:
                 self.possible_chunk.append(map)
                 random.shuffle(self.possible_chunk)
                     
-        for i in range(93):
+        for i in range(len(self.possible_chunk)):
             self.chunk_list.append(Map(al.path(f"files/maps/tmx/{self.possible_chunk[0]}.tmx")))
             self.possible_chunk.pop(0)
             
@@ -70,6 +70,7 @@ class Level:
         if self.score.score_interne > self.player.current_speed*15:
             self.score.score_interne = 0
             self.player.current_speed += 1
+            print(self.player.current_speed)
         self.camera.score = self.score.update()
         
     def send_player_rect(self):

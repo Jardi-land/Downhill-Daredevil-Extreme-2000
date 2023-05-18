@@ -69,7 +69,7 @@ class GameClass:
         if self.screen_size != self.surface.get_size():
             self.surface_scale = al.im_scale(self.surface, self.screen_size)
         else:
-            self.surface_scale = self.surface.copy()
+            self.surface_scale = self.surface
             
     def update(self):
         if not self.in_game:

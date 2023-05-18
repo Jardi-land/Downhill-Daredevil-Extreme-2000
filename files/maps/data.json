@@ -18,7 +18,7 @@
         "weight": 3
     },
     "map-007": {
-        "weight": 4
+        "weight": 3
     },
     "map-008": {
         "weight": 4
@@ -28,5 +28,8 @@
     },
     "map-010": {
         "weight": 4
+    },
+    "map-011": {
+        "weight": 2
     }
 }

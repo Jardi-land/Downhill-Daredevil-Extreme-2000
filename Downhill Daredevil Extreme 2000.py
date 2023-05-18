@@ -125,6 +125,7 @@ def game_loop(fullscreen: bool = False,
         # Update de l'input
         # -----------------
         Input_global.frame_end()
+        pygame.display.set_caption(f"{name} - {clock.get_fps():.2f} fps")
         # -----------------
 
         # Debug overlay ici (si besoin)
