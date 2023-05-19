@@ -170,6 +170,3 @@ cython_debug/
 
 # Local History for Visual Studio Code
 .history/
-
-# Score and player data
-files/score/*.txt
