@@ -87,14 +87,19 @@ class GameClass:
                 if self.show_death_screen_index == 0:
                     self.show_death_screen = True
                     self.show_death_screen_index = 90
-                    with open(al.path("files/score/best.txt"), "r") as f:
-                        self.current_best = int(f.read())
-                        if int(self.level.score.score) > self.current_best:
-                            with open(al.path("files/score/best.txt"), "w") as i:
-                                i.write(str(int(self.level.score.score)))
-                                self.best_score = int(self.level.score.score)
-                        else:
-                            self.best_score = self.current_best
+                    if not al.filecheck(al.path("files/score/best.txt")):
+                        with open(al.path("files/score/best.txt"), "w") as i:
+                            i.write(str(int(self.level.score.score)))
+                            self.best_score = int(self.level.score.score)
+                    else:
+                        with open(al.path("files/score/best.txt"), "r") as f:
+                            self.current_best = int(f.read())
+                            if int(self.level.score.score) > self.current_best:
+                                with open(al.path("files/score/best.txt"), "w") as i:
+                                    i.write(str(int(self.level.score.score)))
+                                    self.best_score = int(self.level.score.score)
+                            else:
+                                self.best_score = self.current_best
                     self.deathscreen = DeathScreen(int(self.level.score.score), self.best_score)
                 self.show_death_screen_index -= 1
         
