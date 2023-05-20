@@ -1,1 +1,0 @@
-python -m nuitka --standalone --onefile --show-progress --output-dir=./compiled_win/ --include-data-dir=./files/=files --windows-disable-console --windows-product-name=DHDDE2000 --windows-product-version=1.0.0.0 main.py

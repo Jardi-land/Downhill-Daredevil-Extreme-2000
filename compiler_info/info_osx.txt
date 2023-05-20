@@ -1,3 +1,0 @@
-Pour --macos-create-app-bundle sur Mac OS X il faut ouvrir l'app dans le terminal puis /Contents/MacOS/ et ajouter les fichiers avec le commande "open ."
-
-+ Renomer le ficher main.py
