@@ -35,11 +35,12 @@ class Debug:
 
         # Création du dictionnaire qui contiendra les textes à afficher
         self.dict = {}
-        
+
         self.debug_mode = False
 
         # Création de la police pour afficher le texte
-        self.font = pygame.font.Font(al.path("files/font/TTF/KenneyMini.ttf"), 15)
+        self.font = pygame.font.Font(
+            al.path("files/font/TTF/KenneyMini.ttf"), 15)
 
     def update(self, text: str = ""):
         """
