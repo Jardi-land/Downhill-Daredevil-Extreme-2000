@@ -69,7 +69,7 @@ class Input:
         # Initialisation des dictionnaires
         self.list_end["keyboard"] = pygame.key.get_pressed()
         self.list_end["mouse"]["buttons"] = pygame.mouse.get_pressed()
-        
+
         self.window_size = pygame.math.Vector2(0, 0)
 
     def frame_begin(self, size) -> None:
@@ -86,7 +86,6 @@ class Input:
         self.list_begin["mouse"]["pos"] = pygame.mouse.get_pos()
         self.list_begin["mouse"]["buttons"] = pygame.mouse.get_pressed()
         self.window_size.x, self.window_size.y = size[0], size[1]
-        
 
     def frame_end(self) -> None:
         """
@@ -215,7 +214,7 @@ class Input:
         else:
             raise ValueError(
                 f"Input.py | L'indice du bouton de la souris doit être 0, 1 ou 2 et non pas {index}.")
-    
+
     def scale_converter(self, base_scale, pos):
         return (self.window_size.x*(pos[0] / base_scale[0]), self.window_size.y*(pos[1] / base_scale[1]))
 
