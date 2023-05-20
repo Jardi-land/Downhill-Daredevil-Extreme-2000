@@ -23,6 +23,7 @@ class GameClass:
         draw(surface: pygame.Surface) -> None:
             Dessine le jeu sur la surface spécifiée.
     """
+
     def __init__(self) -> None:
         """
         Initialise une instance de la classe GameClass.
@@ -32,14 +33,14 @@ class GameClass:
         self.surface_scale = self.surface.copy()
 
         self.screen_size = (1920, 1080)
-        
+
         self.menu = Menu()
         self.level = Level()
-        
+
         self.in_game = False
         self.clicked = False
         self.button_disappear = 10
-        
+
         self.show_death_screen = False
         self.show_death_screen_index = 90
 
@@ -55,7 +56,7 @@ class GameClass:
         self.surface.blit(self.level.update(), (0, 0))
         if not self.in_game:
             self.surface.blit(self.menu.draw(), (0, 0))
-            
+
         if self.show_death_screen:
             self.surface.blit(self.deathscreen.draw(), (0, 0))
 
@@ -70,18 +71,18 @@ class GameClass:
             self.surface_scale = al.im_scale(self.surface, self.screen_size)
         else:
             self.surface_scale = self.surface
-            
+
     def update(self):
         if not self.in_game:
             if self.clicked:
                 self.button_disappear -= 1
             if self.menu.update() is not None:
                 self.clicked = True
-                
+
             if self.button_disappear == 0:
                 self.in_game = True
                 self.level.player.current_speed = self.level.player.initial_speed
-                
+
         if not self.show_death_screen:
             if self.level.player.status == "dead":
                 if self.show_death_screen_index == 0:
@@ -97,12 +98,14 @@ class GameClass:
                             if int(self.level.score.score) > self.current_best:
                                 with open(al.path("files/score/best.txt"), "w") as i:
                                     i.write(str(int(self.level.score.score)))
-                                    self.best_score = int(self.level.score.score)
+                                    self.best_score = int(
+                                        self.level.score.score)
                             else:
                                 self.best_score = self.current_best
-                    self.deathscreen = DeathScreen(int(self.level.score.score), self.best_score)
+                    self.deathscreen = DeathScreen(
+                        int(self.level.score.score), self.best_score)
                 self.show_death_screen_index -= 1
-        
+
         if self.show_death_screen:
             if self.deathscreen.update() is not None:
                 self.deathscreen.fade_in = True
@@ -113,7 +116,6 @@ class GameClass:
                 self.in_game = False
                 self.clicked = False
                 self.button_disappear = 10
-
 
     def draw(self, surface: pygame.Surface) -> None:
         """
