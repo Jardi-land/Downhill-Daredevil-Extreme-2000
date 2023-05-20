@@ -61,13 +61,14 @@ def path(path: str) -> str:
     """
     return os.path.join(os.path.dirname(sys.argv[0]), path)
 
+
 def filecheck(path: str) -> bool:
     """
     Vérifie si le fichier existe
-    
+
     Args:
         path (str): Le chemin d'accés à vérifier
-        
+
     Returns:
         bool: True si le fichier existe, False sinon
     """
