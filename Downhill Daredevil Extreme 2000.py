@@ -58,11 +58,10 @@ def game_loop(fullscreen: bool = False,
 
     # Définition de l'affichage du curseur de la souris
     pygame.mouse.set_visible(mouse_visible)
-    
+
     # Musique du jeu
     mixer.music.load(al.path("files/sound/music/music2.mp3"))
-    mixer.music.set_volume(0.05)
-    
+    mixer.music.set_volume(0.1)
 
     # Définition de l'icône de la fenêtre en fonction de icon_type
     match icon_type:
@@ -99,12 +98,11 @@ def game_loop(fullscreen: bool = False,
     # ----------------------
     Game = GameClass()
     # ----------------------
-    
+
     # Musique du jeu
     # ----------------------
     mixer.music.play(-1)
     # ----------------------
-    
 
     # Une fois que le jeu est prêt, on lance la boucle principale
     while True:
@@ -137,7 +135,7 @@ def game_loop(fullscreen: bool = False,
 
         # Debug overlay ici (si besoin)
         # -----------------------
-        #Debug_overlay.draw(window)
+        # Debug_overlay.draw(window)
         # -----------------------
 
         # Update de la fenêtre
