@@ -120,6 +120,7 @@ def game_loop(fullscreen: bool = False,
         # Game class object update here
         # -----------------------------
         Game.draw(window)
+        Debug_overlay.update()
         # -----------------------------
 
         # Update de l'input

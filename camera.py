@@ -40,9 +40,12 @@ class Camera:
         self.surface_track_full = pygame.Surface((1920, self.player_pos.y - self.player_image.get_height()/2)).convert_alpha()
         self.surface_track_full.fill((0, 0, 0, 0))
         
+        self.bonus_hit = False
+        
         mixer.init()
         
         self.hit_sound = mixer.Sound(al.path("files/sound/hit.mp3"))
+        self.powerup = mixer.Sound(al.path("files/sound/powerup.mp3"))
         
         self.sound_played = False
 
@@ -98,14 +101,18 @@ class Camera:
                             mixer.Sound.play(self.hit_sound)
                     if self.debug.debug_mode:
                         pygame.draw.rect(self.surface, (255, 0, 0), rect["rect"])
+                if chunk.bonus:
+                    chunk.speed_minus_rect.x = chunk.speed_minus_pos[0] + self.vector_offset.x
+                    chunk.speed_minus_rect.y = chunk.speed_minus_pos[1] + (self.vector_offset.y + (value*chunk.surfaces["up"].get_height()))
+                    if self.player_rect.colliderect(chunk.speed_minus_rect):
+                        self.bonus_hit = True
+                        chunk.bonus = False
+                        mixer.Sound.play(self.powerup)
+                    if self.debug.debug_mode:
+                        pygame.draw.rect(self.surface, (0, 255, 0), chunk.speed_minus_rect)
 
         if self.debug.debug_mode:
             pygame.draw.rect(self.surface, (255, 0, 0), self.player_rect)
-            if self.player_left_rect is not None:
-                pygame.draw.rect(self.surface, (0, 255, 0), self.player_left_rect)
-            if self.player_right_rect is not None:
-                pygame.draw.rect(self.surface, (0, 255, 0), self.player_right_rect)
-            pygame.draw.rect(self.surface, (0, 255, 0), self.player_down_rect)
         
         self.surface.blit(self.score, (self.surface.get_width() - self.score.get_width() - 10, 10))
 

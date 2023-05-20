@@ -66,28 +66,32 @@ class Level:
     def forward(self):
         self.camera.vector_offset.y -= self.player.current_speed
         self.score.score += self.player.current_speed/10
+        print(f"Vitesse : {round(self.player.current_speed, 2)}m/s")
         self.score.score_interne += self.player.current_speed/10
         if self.score.score_interne > self.player.current_speed*15:
             self.score.score_interne = 0
             self.player.current_speed += 1
             print(self.player.current_speed)
         self.camera.score = self.score.update()
-        
-    def send_player_rect(self):
-        self.camera.player_left_rect = self.player.left_rect
-        self.camera.player_right_rect = self.player.right_rect
-        self.camera.player_down_rect = self.player.down_rect
+
     
     def check_player_status(self):
         if self.camera.player_status == "dead":
             self.player.status = "dead"
+            
+    def check_player_bonus(self):
+        if self.camera.bonus_hit:
+            print(int(self.player.current_speed/5))
+            self.player.current_speed -= int(self.player.current_speed/5)
+            self.camera.bonus_hit = False
+            self.player.bonus_toggle()
     
     def update(self):
+        self.check_player_bonus()
         self.check_player_status()
         self.player.update()
         self.camera.player_image = self.player.image
         self.camera.player_pos = self.player.pos
-        self.send_player_rect()
         self.forward()
         self.camera.player_speed = self.player.current_speed
         return self.camera.draw(self.chunk_list)

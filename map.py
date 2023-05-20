@@ -25,7 +25,16 @@ class Map:
         self.layers = {"background": self.map_data.get_layer_by_name("background"),
                        "obstacle": self.map_data.get_layer_by_name("obstacle")}
         
-        self.__check_deco_layer()
+        self.layers_array = {
+            "background": "down",
+            "obstacle": "up",
+            "deco": "down",
+        }
+        
+        self.bonus = False
+        
+        self.__check_layer("deco")
+        self.__check_layer("bonus")
 
         self.__draw()
         
@@ -33,23 +42,22 @@ class Map:
         
         self.__set_colliders()
 
-    def __check_deco_layer(self):
+    def __check_layer(self, layer_name: str):
         for layer in self.map_data.visible_layers:
-            if layer.name == "deco":
-                self.layers["deco"] = layer
+            if layer.name == layer_name:
+                self.layers[layer_name] = layer
+
 
     def __draw(self):
         for layer in self.layers:
-            for x, y, surf in self.layers[layer].tiles():
-                match layer:
-                    case "background":
-                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
-                        )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
-                    case "obstacle":
-                        self.surfaces["up"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
-                        )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
-                    case "deco":
-                        self.surfaces["down"].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
+            match layer:
+                case "bonus":
+                    self.speed_minus_rect = pygame.rect.Rect(self.map_data.get_object_by_name("speed_minus").x*self.scale, self.map_data.get_object_by_name("speed_minus").y*self.scale, self.map_data.get_object_by_name("speed_minus").width*self.scale, self.map_data.get_object_by_name("speed_minus").height*self.scale)
+                    self.speed_minus_pos = (self.map_data.get_object_by_name("speed_minus").x*self.scale, self.map_data.get_object_by_name("speed_minus").y*self.scale)
+                    self.bonus = True
+                case other:
+                    for x, y, surf in self.layers[layer].tiles():
+                        self.surfaces[self.layers_array[other]].blit(al.im_scale(surf, (surf.get_width()*self.scale, surf.get_height(
                         )*self.scale)), (x * self.map_data.tilewidth * self.scale, y * self.map_data.tileheight * self.scale))
                         
     def __set_colliders(self):

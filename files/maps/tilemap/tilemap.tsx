@@ -8,7 +8,8 @@
  </tile>
  <tile id="18">
   <objectgroup draworder="index" id="2">
-   <object id="1" name="collider" x="0" y="0" width="15" height="15"/>
+   <object id="1" name="collider" x="0" y="0" width="15" height="12"/>
+   <object id="3" name="collider" x="5" y="12" width="6" height="3"/>
   </objectgroup>
  </tile>
  <tile id="19">

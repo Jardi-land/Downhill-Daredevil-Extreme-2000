@@ -23,6 +23,13 @@ class Player:
         self.images = {
             "green": {
                 "idle": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle"]), (16*6.75, 16*6.75)),
+                "idle_mask": {
+                    "1": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle_mask", "1"]), (16*6.75, 16*6.75)),
+                    "2": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle_mask", "2"]), (16*6.75, 16*6.75)),
+                    "3": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle_mask", "3"]), (16*6.75, 16*6.75)),
+                    "4": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle_mask", "4"]), (16*6.75, 16*6.75)),
+                    "5": al.im_scale(self.spritesheet.parse_sprite(info=["green", "idle_mask", "5"]), (16*6.75, 16*6.75)),
+                },
                 "push": al.im_scale(self.spritesheet.parse_sprite(info=["green", "push"]), (16*6.75, 16*6.75))
             },
             "purple": {
@@ -33,6 +40,9 @@ class Player:
         
         self.player_type = "green"
         self.player_state = "idle"
+        self.player_mask_total = 5
+        self.player_mask_index = 1
+        self.player_mask_speed = 0.25
 
         self.image = self.images[self.player_type][self.player_state]
         
@@ -53,11 +63,12 @@ class Player:
         
         self.track = al.im_scale(self.spritesheet.parse_sprite(info=["track"]), (16*6.75, 16*6.75))
         
+        self.bonus_anim = False
+        
     def movement(self):
         if not self.pos.x < 50:
             if self.input_global.get_pressed("a"):
                 self.pos.x = self.pos.x-self.current_speed
-                self.left_rect = pygame.rect.Rect(self.rect.left-self.current_speed, self.rect.top, self.current_speed, self.image.get_height()/2+self.current_speed)
             else:
                 if self.left_rect is not None:
                     self.left_rect = None
@@ -65,12 +76,10 @@ class Player:
         if not self.pos.x > 1870:
             if self.input_global.get_pressed("d"):
                 self.pos.x = self.pos.x+self.current_speed
-                self.right_rect = pygame.rect.Rect(self.rect.right, self.rect.top, self.current_speed, self.image.get_height()/2+self.current_speed)
             else:
                 if self.right_rect is not None:
                     self.right_rect = None
-                
-        self.down_rect = pygame.rect.Rect(self.rect.left, self.rect.bottom, self.image.get_width(), self.current_speed)
+
             
     def dead_animation(self):
         if self.dead_index == 0:
@@ -82,8 +91,21 @@ class Player:
             
         self.dead_index -= 1
         
+    def bonus_toggle(self):
+        self.bonus_anim = True
+        
+    def bonus_animation(self):
+        self.image = self.images[self.player_type]["idle_mask"][str(int(self.player_mask_index))]
+        self.player_mask_index += self.player_mask_speed
+        if int(self.player_mask_index) == self.player_mask_total + 1:
+            self.player_mask_index = 1
+            self.bonus_anim = False
+            self.image = self.images[self.player_type]["idle"]
+        
          
     def update(self):
+        if self.bonus_anim:
+            self.bonus_animation()
         if self.status == "alive":
             self.movement()
             self.rect.centerx = self.pos.x
