@@ -6,7 +6,7 @@
 Bienvenue dans le dépôt GitHub de Downhill Daredevil Extreme 2000, un jeu en 2D de ski passionnant où vous devez dévaler une piste dangereuse tout en évitant les obstacles sur votre chemin. Affrontez des descentes à couper le souffle, des virages serrés et des sauts risqués tout en tentant de battre votre propre record de vitesse. Ce jeu est conçu pour les amateurs de sensations fortes qui cherchent à mettre leur habileté à l'épreuve. Le code source est disponible pour que vous puissiez explorer, apprendre et contribuer. N'hésitez pas à télécharger et à jouer au jeu pour vivre une expérience de ski extrême unique !
 
 ## Comment jouer ?
-Le but du jeu est de dévaler une pente infinie le plus longtemps possible tout en évitant un maximums d'obstacles. Plus vous dévalez la pente plus votre score augmente et plus votre vitesse augmente (donc la difficulté aussi). Pour se déplacer utilisez les flèches directionnelles gauche et droite.
+Le but du jeu est de dévaler une pente infinie le plus longtemps possible tout en évitant un maximums d'obstacles. Plus vous dévalez la pente plus votre score augmente et plus votre vitesse augmente (donc la difficulté aussi). Pour se déplacer utilisez les touches a et d (clavier qwertz et qwerty).
 
 ## Requirements
 
@@ -23,10 +23,16 @@ git clone https://github.com/Jardi-land/Downhill-Daredevil-Extreme-2000.git
 ```shell
 pip install -r requirements.txt
 ```
-Ensuite, vous pouvez exécuter le fichier "main.py" dans votre terminal ou via votre environnement de développement Python.
+Ensuite, vous pouvez exécuter le fichier "Downhill Daredevil Extreme 2000.py" dans votre terminal ou via votre environnement de développement Python.
 
+Windows:
 ```shell
-python main.py
+python Downhill\ Daredevil\ Extreme\ 2000.py
+```
+
+MacOS:
+```shell
+python3 Downhill\ Daredevil\ Extreme\ 2000.py
 ```
 
 ## Authors
