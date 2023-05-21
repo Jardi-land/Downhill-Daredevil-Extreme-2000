@@ -131,5 +131,8 @@ class Camera:
 
         self.surface.blit(
             self.score, (self.surface.get_width() - self.score.get_width() - 10, 10))
+        
+        self.surface.blit(
+            self.speed_surface, (10, 10))
 
         return self.surface

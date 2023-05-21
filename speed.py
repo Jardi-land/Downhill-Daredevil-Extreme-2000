@@ -9,21 +9,20 @@ import alias as al
 from custom_font import Font
 
 
-class Score:
+class Speed:
     def __init__(self) -> None:
         self.font_spritesheet = SpriteSheet(al.path(
             "files/font/custom/tilesheet.png"), al.path("files/font/custom/data.json"))
 
-        self.font = Font(self.font_spritesheet, 6)
+        self.font = Font(self.font_spritesheet, 5)
 
-        self.score = 0
-        self.score_interne = 0
+        self.speed = 10
 
-        self.score_surface = self.font.render(str(self.score))
+        self.speed_surface = self.font.render(f"{str(int(self.speed))}M/S", "#")
 
     def render_text(self):
-        self.score_surface = self.font.render(str(int(self.score)))
+        self.speed_surface = self.font.render(f"{str(int(self.speed))}M/S", "#")
 
     def update(self):
         self.render_text()
-        return self.score_surface
+        return self.speed_surface

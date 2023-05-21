@@ -12,6 +12,7 @@ from player import Player
 from map import Map
 from camera import Camera
 from score import Score
+from speed import Speed
 
 
 class Level:
@@ -24,6 +25,7 @@ class Level:
         self.camera = Camera(self.player.image, self.player.pos,
                              self.player.rect, self.player.track)
         self.score = Score()
+        self.speed = Speed()
 
         self.__load_maps()
         self.__load_spawn()
@@ -67,12 +69,12 @@ class Level:
     def forward(self):
         self.camera.vector_offset.y -= self.player.current_speed
         self.score.score += self.player.current_speed/10
-        print(f"Vitesse : {round(self.player.current_speed, 2)}m/s")
         self.score.score_interne += self.player.current_speed/10
         if self.score.score_interne > self.player.current_speed*15:
             self.score.score_interne = 0
             self.player.current_speed += 1
-            print(self.player.current_speed)
+        self.speed.speed = self.player.current_speed
+        self.camera.speed_surface = self.speed.update()
         self.camera.score = self.score.update()
 
     def check_player_status(self):
