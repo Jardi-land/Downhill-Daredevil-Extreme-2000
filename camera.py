@@ -109,8 +109,10 @@ class Camera:
                             self.sound_played = True
                             mixer.Sound.play(self.hit_sound)
                     if self.debug.debug_mode:
-                        pygame.draw.rect(
-                            self.surface, (255, 0, 0), rect["rect"])
+                        #check rect["rect"] distance with player_rect
+                        if abs(self.player_rect.y - rect["rect"].y) < 750:
+                            pygame.draw.rect(
+                                self.surface, (255, 0, 0), rect["rect"])
                 if chunk.bonus:
                     chunk.speed_minus_rect.x = chunk.speed_minus_pos[0] + \
                         self.vector_offset.x

@@ -51,7 +51,7 @@ class Level:
         self.possible_chunk = []
 
         for map in self.maps:
-            for i in range(self.maps[map]["weight"]*3):
+            for i in range(self.maps[map]["weight"]*4):
                 self.possible_chunk.append(map)
                 random.shuffle(self.possible_chunk)
 
@@ -94,4 +94,5 @@ class Level:
         self.camera.player_pos = self.player.pos
         self.forward()
         self.camera.player_speed = self.player.current_speed
+        self.camera.level = self
         return self.camera.draw(self.chunk_list)
