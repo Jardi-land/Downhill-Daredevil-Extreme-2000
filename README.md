@@ -23,10 +23,16 @@ git clone https://github.com/Jardi-land/Downhill-Daredevil-Extreme-2000.git
 ```shell
 pip install -r requirements.txt
 ```
-Ensuite, vous pouvez exécuter le fichier "main.py" dans votre terminal ou via votre environnement de développement Python.
+Ensuite, vous pouvez exécuter le fichier "Downhill Daredevil Extreme 2000.py" dans votre terminal ou via votre environnement de développement Python.
 
+Windows:
 ```shell
-python main.py
+python Downhill\ Daredevil\ Extreme\ 2000.py
+```
+
+MacOS:
+```shell
+python3 Downhill\ Daredevil\ Extreme\ 2000.py
 ```
 
 ## Authors
