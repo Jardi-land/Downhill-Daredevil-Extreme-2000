@@ -173,3 +173,4 @@ cython_debug/
 
 # Compiler info
 compiler_info/
+compiled_osx/
