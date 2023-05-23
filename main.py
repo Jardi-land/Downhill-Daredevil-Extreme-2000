@@ -4,7 +4,7 @@
 # ------------------
 
 import pygame  # Import de la libraire pygame
-from pygame import mixer
+from pygame import mixer # Import de la librairie mixer de pygame
 from pygame.locals import *  # Import des constantes de pygame
 import os  # Import de la librairie os
 import platform  # Import de la librairie platform
@@ -40,8 +40,8 @@ def game_loop(fullscreen: bool = False,
     """
 
     # Initialisation de pygame
-    pygame.init()
-    mixer.init()
+    pygame.init() # Initialisation de pygame
+    mixer.init() # Initialisation de mixer
 
     # Création de la fenêtre du jeu
     window = pygame.display.set_mode((1200, 675),
@@ -138,11 +138,6 @@ def game_loop(fullscreen: bool = False,
         Input_global.frame_end()
         pygame.display.set_caption(f"{name} - {clock.get_fps():.2f} fps")
         # -----------------
-
-        # Debug overlay ici (si besoin)
-        # -----------------------
-        # Debug_overlay.draw(window)
-        # -----------------------
 
         # Update de la fenêtre
         pygame.display.flip()

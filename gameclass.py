@@ -28,7 +28,7 @@ class GameClass:
         """
         Initialise une instance de la classe GameClass.
         """
-        self.surface = pygame.Surface((1920, 1080))
+        self.surface = pygame.Surface((1920, 1080)).convert_alpha()
         self.surface.fill((0, 0, 0, 0))
         self.surface_scale = self.surface.copy()
 

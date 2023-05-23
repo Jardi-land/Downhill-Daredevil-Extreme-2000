@@ -32,7 +32,7 @@ class SpriteSheet:
     """
 
     def __init__(self, filepath, jsonfile):
-        """        
+        """
         Initialise un nouvel objet SpriteSheet avec les fichiers d'image et de données JSON donnés.
 
         Args:
