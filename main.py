@@ -44,7 +44,7 @@ def game_loop(fullscreen: bool = False,
     mixer.init()
 
     # Création de la fenêtre du jeu
-    window = pygame.display.set_mode((0, 0),
+    window = pygame.display.set_mode((1200, 675),
                                      (HWSURFACE | DOUBLEBUF) | FULLSCREEN if fullscreen else RESIZABLE)
 
     from input import Input_global
@@ -102,6 +102,11 @@ def game_loop(fullscreen: bool = False,
     # Musique du jeu
     # ----------------------
     mixer.music.play(-1)
+    # ----------------------
+    
+    # Définition de la taille de l'écran
+    # ----------------------
+    Game.screen_size = (1200, 675)
     # ----------------------
 
     # Une fois que le jeu est prêt, on lance la boucle principale
