@@ -115,6 +115,7 @@ def game_loop(fullscreen: bool = False,
             if event.type == QUIT:
                 pygame.quit()
                 exit()
+                
 
         # Update de l'input
         # -----------------
