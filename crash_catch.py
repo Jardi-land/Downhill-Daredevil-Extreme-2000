@@ -40,8 +40,7 @@ def main(crash_report: str) -> None:
 
     # Définition de la police d'écriture
     font = pygame.font.Font(al.path("files/font/TTF/KenneyMini.ttf"),
-                            8, bold=False, italic=False)
-
+                            8)
     # Render du texte
     font_render = font.render(
         f"{window_name[0:14]}... a rencontré une", True, pygame.Color(255, 255, 255))
