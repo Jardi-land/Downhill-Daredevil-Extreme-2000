@@ -119,7 +119,7 @@ def game_loop(fullscreen: bool = False,
             # Si l'événement est QUIT, on quitte le jeu et python
             if event.type == QUIT:
                 pygame.quit()
-                exit()
+                quit()
                 
 
         # Update de l'input
