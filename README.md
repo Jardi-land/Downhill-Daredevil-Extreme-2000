@@ -23,16 +23,16 @@ git clone https://github.com/Jardi-land/Downhill-Daredevil-Extreme-2000.git
 ```shell
 pip install -r requirements.txt
 ```
-Ensuite, vous pouvez exécuter le fichier "Downhill Daredevil Extreme 2000.py" dans votre terminal ou via votre environnement de développement Python.
+Ensuite, vous pouvez exécuter le fichier "main.py" dans votre terminal ou via votre environnement de développement Python.
 
 Windows:
 ```shell
-python Downhill\ Daredevil\ Extreme\ 2000.py
+python main.py
 ```
 
 MacOS:
 ```shell
-python3 Downhill\ Daredevil\ Extreme\ 2000.py
+python3 main.py
 ```
 
 ## Authors
@@ -42,7 +42,7 @@ python3 Downhill\ Daredevil\ Extreme\ 2000.py
 
 ## License
 
-Ce jeu est publié sous la licence MIT. Vous êtes libre de l'utiliser, le modifier et le distribuer à condition de citer les auteurs originaux et de ne pas enfreindre les termes de la [licence MIT](https://choosealicense.com/licenses/mit/).
+Ce jeu est publié sous la licence MIT. Vous êtes libre de l'utiliser, le modifier les auteurs originaux et de ne pas enfreindre les termes de la [licence MIT](https://choosealicense.com/licenses/mit/).
 
 ##
 
