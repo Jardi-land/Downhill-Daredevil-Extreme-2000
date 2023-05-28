@@ -114,8 +114,8 @@ def game_loop(fullscreen: bool = False,
         # Récupération des événements pygame
         for event in pygame.event.get():
             # Si l'événement est VIDEORESIZE, on affiche les nouvelles dimensions de la fenêtre
-            if event.type == VIDEORESIZE:
-                Game.screen_size = (event.w, event.h)
+            # if event.type == VIDEORESIZE:
+            #     Game.screen_size = (event.w, event.h)
             # Si l'événement est QUIT, on quitte le jeu et python
             if event.type == QUIT:
                 pygame.quit()
@@ -124,25 +124,25 @@ def game_loop(fullscreen: bool = False,
 
         # Update de l'input
         # -----------------
-        Input_global.frame_begin(window.get_size())
+        #Input_global.frame_begin(window.get_size())
         # -----------------
 
         # Game class object update here
         # -----------------------------
         Game.draw(window)
-        Debug_overlay.update()
+        #Debug_overlay.update()
         # -----------------------------
 
         # Update de l'input
         # -----------------
-        Input_global.frame_end()
+        #Input_global.frame_end()
         pygame.display.set_caption(f"{name} - {clock.get_fps():.2f} fps")
         # -----------------
 
         # Update de la fenêtre
-        pygame.display.flip()
+        #pygame.display.flip()
         # On limite le nombre de rafraîchissement de la fenêtre à 60 fps
-        clock.tick(60)
+        clock.tick(100)
 
 
 # Si le fichier est exécuté, on lance la boucle principale
